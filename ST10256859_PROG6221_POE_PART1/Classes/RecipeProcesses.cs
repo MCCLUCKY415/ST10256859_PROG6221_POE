@@ -9,17 +9,31 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
         public void ScaleRecipe(Ingredients[] ing, double factor)
         {
-            foreach (var ingredient in ing)
+            if (ing != null && ing.Length > 0)
             {
-                ingredient.IngQuantity = ingredient.OriginalIngQuantity * factor;
+                foreach (var ingredient in ing)
+                {
+                    ingredient.IngQuantity = ingredient.OriginalIngQuantity * factor;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No ingredients to scale. Please enter a new recipe first.");
             }
         }
 
         public void ResetNewQuantities(Ingredients[] ing)
         {
-            foreach (var ingredient in ing)
+            if (ing != null && ing.Length > 0)
             {
-                ingredient.IngQuantity = ingredient.OriginalIngQuantity;
+                foreach (var ingredient in ing)
+                {
+                    ingredient.IngQuantity = ingredient.OriginalIngQuantity;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No ingredients to reset. Please enter a new recipe first.");
             }
         }
 
@@ -31,41 +45,50 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
         public void DisplayRecipe(Ingredients[] ing, Steps[] steps)
         {
-            Console.WriteLine("\n            RECIPE            ");
-            Console.WriteLine("*******************************");
-            Console.WriteLine("Ingredients:");
-            foreach (var ingredient in ing)
+            if (ing != null && ing.Length > 0 && steps != null && steps.Length > 0)
             {
-                Console.WriteLine(ingredient.IngQuantity + " " + ingredient.IngUnitOfMeasure + " " + ingredient.IngName);
-            }
+                Console.WriteLine("\n            RECIPE            ");
+                Console.WriteLine("*******************************");
+                Console.WriteLine("Ingredients:");
+                foreach (var ingredient in ing)
+                {
+                    Console.WriteLine(ingredient.IngQuantity + " " + ingredient.IngUnitOfMeasure + " " + ingredient.IngName);
+                }
 
-            Console.WriteLine("\nSteps:");
-            foreach (var step in steps)
+                Console.WriteLine("\nSteps:");
+                foreach (var step in steps)
+                {
+                    Console.WriteLine(step.StepDescription);
+                }
+            }
+            else
             {
-                Console.WriteLine(step.StepDescription);
+                Console.WriteLine("No recipe to display. Please enter a new recipe first.");
             }
         }
 
-        public void MainMenu(Ingredients[] ing, Steps[] stp)
+        public void MainMenu()
         {
+            Ingredients[] ing = new Ingredients[0];
+            Steps[] stp = new Steps[0];
+
             while (true)
             {
-                DisplayRecipe(ing, stp);
-
                 Console.WriteLine("\n            MENU            ");
                 Console.WriteLine("*****************************");
-                Console.WriteLine("1) Enter a new recipe");
+                Console.WriteLine("\n1) Enter a new recipe");
                 Console.WriteLine("2) Scale recipe");
                 Console.WriteLine("3) Reset quantities");
                 Console.WriteLine("4) Clear all data");
                 Console.WriteLine("5) Exit");
-                Console.Write("Enter your choice: ");
+                Console.WriteLine("*****************************");
+                Console.Write("\nEnter your choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
 
                 if (choice == 1)
                 {
-                    // Code to handle entering a new recipe
-                    break;
+                    ing = this.ing.GetIngredients();
+                    stp = this.stp.GetSteps();
                 }
                 else if (choice == 2)
                 {
@@ -80,11 +103,15 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                 else if (choice == 4)
                 {
                     ClearAllData();
+                    ing = new Ingredients[0];
+                    stp = new Steps[0];
                 }
                 else if (choice == 5)
                 {
                     return;
                 }
+
+                DisplayRecipe(ing, stp);
             }
         }
     }

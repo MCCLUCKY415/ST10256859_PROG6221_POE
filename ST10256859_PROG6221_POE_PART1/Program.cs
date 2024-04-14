@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ST10256859_PROG6221_POE_PART1.Classes;
 
 namespace ST10256859_PROG6221_POE_PART1
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
+            RecipeProcesses recipeProcesses = new RecipeProcesses();
+            recipeProcesses.MainMenu();
         }
     }
 }
