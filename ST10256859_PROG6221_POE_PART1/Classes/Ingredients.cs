@@ -13,8 +13,11 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         public double IngQuantity { get; set; }
         public double OriginalIngQuantity { get; set; }
 
-        public Ingredients[] GetIngredients(int numIngredients)
+        public Ingredients[] GetIngredients()
         {
+            Console.Write("Please enter the total number of ingredients that will be used: ");
+            int numIngredients = Convert.ToInt32(Console.ReadLine());
+
             Ingredients[] ing = new Ingredients[numIngredients];
             for (int i = 0; i < numIngredients; i++)
             {
@@ -24,7 +27,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                 Console.Write("Please enter the quantity of ingredient " + (i + 1) + ": ");
                 double quantity = Convert.ToDouble(Console.ReadLine());
 
-                Console.Write("Please enter the unit of measurement that will be used for ingredient " + (i + 1) + ": ");
+                Console.Write("Please enter the unit of measurement that will be used for ingredient (e.g. a tablespoon) " + (i + 1) + ": ");
                 string measurement = Console.ReadLine();
 
                 ing[i] = new Ingredients { IngName = name, IngQuantity = quantity, IngUnitOfMeasure = measurement, OriginalIngQuantity = quantity };

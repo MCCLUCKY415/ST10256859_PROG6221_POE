@@ -9,10 +9,12 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
     public class Steps
     {
         public string StepDescription { get; set; }
-        public int NumOfSteps { get; set; }
 
-        public Steps[] GetSteps(int numSteps)
+        public Steps[] GetSteps()
         {
+            Console.Write("Please enter the total number of steps: ");
+            int numSteps = Convert.ToInt32(Console.ReadLine());
+
             Steps[] stp = new Steps[numSteps];
             for (int i = 0; i < numSteps; i++)
             {
