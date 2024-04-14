@@ -10,6 +10,7 @@ namespace ST10256859_PROG6221_POE_PART1
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
