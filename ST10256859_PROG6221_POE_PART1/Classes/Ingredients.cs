@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ST10256859_PROG6221_POE_PART1.Classes
 {
@@ -12,14 +8,15 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         public string IngUnitOfMeasure { get; set; }
         public double IngQuantity { get; set; }
         public double OriginalIngQuantity { get; set; }
+        public int NumIngredients { get; set; } = 0;
 
         public Ingredients[] GetIngredients()
         {
             Console.Write("Please enter the total number of ingredients that will be used: ");
-            int numIngredients = Convert.ToInt32(Console.ReadLine());
+            NumIngredients = Convert.ToInt32(Console.ReadLine());
 
-            Ingredients[] ing = new Ingredients[numIngredients];
-            for (int i = 0; i < numIngredients; i++)
+            Ingredients[] ing = new Ingredients[NumIngredients];
+            for (int i = 0; i < NumIngredients; i++)
             {
                 Console.Write("Please enter the name of ingredient " + (i + 1) + ": ");
                 string name = Console.ReadLine();
