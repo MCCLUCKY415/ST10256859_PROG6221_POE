@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.WebRequestMethods;
 
 namespace ST10256859_PROG6221_POE_PART1.Classes
 {
@@ -24,7 +18,9 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             }
             else
             {
-                Console.WriteLine("No ingredients to scale. Please enter a new recipe first.");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\n\nNo ingredients to scale. Please enter a new recipe first!\n\n");
+                Console.ResetColor();
             }
         }
 
@@ -39,7 +35,9 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             }
             else
             {
-                Console.WriteLine("No ingredients to reset. Please enter a new recipe first.");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\n\nNo ingredients to reset. Please enter a new recipe first!\n\n");
+                Console.ResetColor();
             }
         }
 

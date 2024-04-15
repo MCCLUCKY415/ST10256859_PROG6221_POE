@@ -12,19 +12,21 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
         public Ingredients[] GetIngredients()
         {
-            bool validInput = false;
+            bool inputValid = false;
 
-            while (!validInput)
+            while (!inputValid)
             {
                 try
                 {
-                    Console.Write("\nPlease enter the total number of ingredients that will be used: ");
+                    Console.Write("\n\nPlease enter the total number of ingredients that will be used: ");
                     NumIngredients = Convert.ToInt32(Console.ReadLine());
-                    validInput = true;
+                    inputValid = true;
                 }
                 catch (FormatException)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nPlease enter a number!");
+                    Console.ResetColor();
                     continue;
                 }
 
@@ -50,13 +52,18 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                         }
                         catch (FormatException)
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("\nPlease enter a number!");
+                            Console.ResetColor();
                             continue;
                         }
                     }
 
                     ing[i] = new Ingredients { IngName = name, IngQuantity = quantity, IngUnitOfMeasure = measurement, OriginalIngQuantity = quantity };
                 }
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\n\nIngredients successfully saved!\n\n");
+                Console.ResetColor();
                 return ing;
             }
             return null;

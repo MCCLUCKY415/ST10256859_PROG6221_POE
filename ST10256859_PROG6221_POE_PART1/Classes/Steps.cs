@@ -16,7 +16,9 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             }
             catch (FormatException)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nPlease enter a number!");
+                Console.ResetColor();
                 return GetSteps();
             }
             Steps[] stp = new Steps[NumSteps];
@@ -27,6 +29,9 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
                 stp[i] = new Steps { StepDescription = description };
             }
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n\n\nSteps successfully saved!\n\n");
+            Console.ResetColor();
             return stp;
         }
     }

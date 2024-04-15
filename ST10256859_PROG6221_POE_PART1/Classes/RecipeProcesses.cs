@@ -12,8 +12,10 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         {
             if (ing != null && ing.Length > 0 && steps != null && steps.Length > 0)
             {
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("\n\n\n****************************");
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("\n\n          RECIPE            ");
+                Console.WriteLine("          RECIPE            ");
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("****************************");
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -34,7 +36,9 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             }
             else
             {
-                Console.WriteLine("No recipe to display. Please enter a new recipe first.");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\n\nNo recipe to display. Please enter a new recipe first!\n\n");
+                Console.ResetColor();
             }
         }
 
@@ -48,13 +52,16 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                 try
                 {
                     Console.WriteLine("\n****************************");
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("            MENU            ");
+                    Console.ResetColor();
                     Console.WriteLine("****************************");
                     Console.WriteLine("1) Enter a new recipe");
-                    Console.WriteLine("2) Scale recipe");
-                    Console.WriteLine("3) Reset quantities");
-                    Console.WriteLine("4) Clear all data");
-                    Console.WriteLine("5) Exit");
+                    Console.WriteLine("2) Display recipe");
+                    Console.WriteLine("3) Scale recipe");
+                    Console.WriteLine("4) Reset quantities");
+                    Console.WriteLine("5) Clear all data");
+                    Console.WriteLine("6) Exit");
                     Console.WriteLine("****************************");
 
                     Console.Write("Enter your choice: ");
@@ -62,7 +69,9 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("\n\nPlease enter a number thats on the menu!\n");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n\nPlease enter a number that correlates to the menu!\n");
+                    Console.ResetColor();
                     continue;
                 }
                 if (choice == 1)
@@ -72,31 +81,49 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                 }
                 else if (choice == 2)
                 {
+                    DisplayRecipe(ing, stp);
+                }
+                else if (choice == 3)
+                {
+                    if (ing.Length == 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n\nNo recipe to scale. Please enter a new recipe first!\n\n");
+                        Console.ResetColor();
+                        continue;
+                    }
                     Console.Write("Please enter the number you would like to scale the recipe by (Put in 0.5 for half, 2 for double or 3 for triple): ");
                     double factor = Convert.ToDouble(Console.ReadLine());
                     altRecipe.ScaleRecipe(ing, factor);
                 }
-                else if (choice == 3)
+                else if (choice == 4)
                 {
                     altRecipe.ResetNewQuantities(ing);
                 }
-                else if (choice == 4)
+                else if (choice == 5)
                 {
+                    if (ing.Length == 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n\nThere's no recipe to clear. Please enter a new recipe first!\n\n");
+                        Console.ResetColor();
+                        continue;
+                    }
                     altRecipe.ClearAllData();
                     ing = new Ingredients[0];
                     stp = new Steps[0];
                 }
-                else if (choice == 5)
+                else if (choice == 6)
                 {
                     return;
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\n\nPlease enter a number thats on the menu!\n");
+                    Console.ResetColor();
                     continue;
                 }
-
-                DisplayRecipe(ing, stp);
             }
         }
     }
