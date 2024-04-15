@@ -47,20 +47,25 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         {
             if (ing != null && ing.Length > 0 && steps != null && steps.Length > 0)
             {
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("\n          RECIPE            ");
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("****************************");
-                Console.WriteLine("Ingredients:\n");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Ingredients:");
                 for (int i = 0; i < ing.Length; i++)
                 {
-                    Console.WriteLine((i + 1) + ". " + ing[i].IngQuantity + " " + ing[i].IngUnitOfMeasure + " " + ing[i].IngName);
+                    Console.WriteLine((i + 1) + ") " + ing[i].IngQuantity + " " + ing[i].IngUnitOfMeasure + " " + ing[i].IngName);
                 }
 
-                Console.WriteLine("\nSteps:\n");
+                Console.WriteLine("\nSteps:");
                 for (int i = 0; i < steps.Length; i++)
                 {
-                    Console.WriteLine((i + 1) + ". " + steps[i].StepDescription);
+                    Console.WriteLine("Step " + (i + 1) + ") " + steps[i].StepDescription);
                 }
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("****************************\n\n");
+                Console.ResetColor();
             }
             else
             {
