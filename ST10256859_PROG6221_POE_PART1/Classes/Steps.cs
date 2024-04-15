@@ -13,17 +13,27 @@ using System;
 
 namespace ST10256859_PROG6221_POE_PART1.Classes
 {
+    // This class is responsible for handling the steps of a recipe.
     public class Steps
     {
-        public string StepDescription { get; set; }
-        public int NumSteps { get; set; } = 0;
+        // Declare properties for the Steps class.
+        public string StepDescription { get; set; }  // The description of the step.
 
+        public int NumSteps { get; set; } = 0;  // The total number of steps. This is used for creating an array of Steps objects.
+
+        // This is the GetSteps method of the Steps class.
         public Steps[] GetSteps()
         {
+            // The try block contains code that might throw an exception.
             try
             {
+                // Prompt the user to enter the total number of steps.
                 Console.Write("\nPlease enter the total number of steps: ");
+
+                // Try to convert the user's input to an integer.
                 NumSteps = Convert.ToInt32(Console.ReadLine());
+
+                // If the number of steps is not within a reasonable range, display an error message and call the GetSteps method again.
                 if (NumSteps <= 0 || NumSteps > 1000000000)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -32,21 +42,30 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                     return GetSteps();
                 }
             }
+            // The catch block contains code to handle the exception.
             catch (FormatException)
             {
+                // If the user's input is not a valid integer, display an error message and call the GetSteps method again.
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\n\nPlease enter a number!\n");
                 Console.ResetColor();
                 return GetSteps();
             }
+
+            // Create an array of Steps objects with a size equal to the number of steps.
             Steps[] stp = new Steps[NumSteps];
+
+            // Loop through the array and prompt the user to enter the description of each step.
             for (int i = 0; i < NumSteps; i++)
             {
                 Console.Write("\nPlease enter the description for step " + (i + 1) + ": ");
                 string description = Console.ReadLine();
 
+                // Create a new Steps object with the entered description and add it to the array.
                 stp[i] = new Steps { StepDescription = description };
             }
+
+            // Display a success message and return the array of Steps objects.
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\n\n\nSteps successfully saved!\n\n");
             Console.ResetColor();
