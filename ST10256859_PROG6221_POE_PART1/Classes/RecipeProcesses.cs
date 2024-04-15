@@ -92,26 +92,65 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                         Console.ResetColor();
                         continue;
                     }
-                    Console.Write("Please enter the number you would like to scale the recipe by (Put in 0.5 for half, 2 for double or 3 for triple): ");
+                    Console.Write("\n\nPlease enter the number you would like to scale the recipe by (Put in '0.5' for half, '2' for double or '3' for triple): ");
                     double factor = Convert.ToDouble(Console.ReadLine());
                     altRecipe.ScaleRecipe(ing, factor);
                 }
                 else if (choice == 4)
                 {
-                    altRecipe.ResetNewQuantities(ing);
+                    if (ing.Length == 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n\nThere is no recipe to reset. Please enter a new recipe first!\n\n");
+                        Console.ResetColor();
+                        continue;
+                    }
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("\n\n\nAre you sure you want to reset all quantities? (yes/no): ");
+                    Console.ResetColor();
+                    string confirm = Console.ReadLine();
+                    if (confirm.Equals("yes", StringComparison.OrdinalIgnoreCase) || confirm.Equals("y", StringComparison.OrdinalIgnoreCase))
+                    {
+                        altRecipe.ResetNewQuantities(ing);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("\n\n\nQuantities successfully reset!\n\n");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n\nResetting quantities cancelled.\n");
+                        Console.ResetColor();
+                    }
                 }
                 else if (choice == 5)
                 {
                     if (ing.Length == 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\n\nThere's no recipe to clear. Please enter a new recipe first!\n\n");
+                        Console.WriteLine("\n\nThere is no recipe to clear. Please enter a new recipe first!\n\n");
                         Console.ResetColor();
                         continue;
                     }
-                    altRecipe.ClearAllData();
-                    ing = new Ingredients[0];
-                    stp = new Steps[0];
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("\n\n\nAre you sure you want to clear all recipe data? (yes/no): ");
+                    Console.ResetColor();
+                    string confirm = Console.ReadLine();
+                    if (confirm.Equals("yes", StringComparison.OrdinalIgnoreCase) || confirm.Equals("y", StringComparison.OrdinalIgnoreCase))
+                    {
+                        altRecipe.ClearAllData();
+                        ing = new Ingredients[0];
+                        stp = new Steps[0];
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("\n\n\nRecipe data successfully cleared!\n\n");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n\nData clearing cancelled.\n");
+                        Console.ResetColor();
+                    }
                 }
                 else if (choice == 6)
                 {
@@ -120,7 +159,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\n\nPlease enter a number thats on the menu!\n");
+                    Console.WriteLine("\n\nPlease enter a number that correlates to the menu!\n");
                     Console.ResetColor();
                     continue;
                 }
