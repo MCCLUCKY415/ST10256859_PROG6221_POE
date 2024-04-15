@@ -13,11 +13,18 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             {
                 Console.Write("\nPlease enter the total number of steps: ");
                 NumSteps = Convert.ToInt32(Console.ReadLine());
+                if (NumSteps <= 0 || NumSteps > 1000000000)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n\nPlease enter a valid number!\n");
+                    Console.ResetColor();
+                    return GetSteps();
+                }
             }
             catch (FormatException)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nPlease enter a number!");
+                Console.WriteLine("\n\nPlease enter a number!\n");
                 Console.ResetColor();
                 return GetSteps();
             }

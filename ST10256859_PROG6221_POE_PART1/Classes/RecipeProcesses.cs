@@ -1,11 +1,5 @@
-﻿// Dhiren Ruthenavelu
-// ST10256859
-// Group 2
+﻿
 
-// References: List of references:
-//             https://www.youtube.com/watch?v=BstOEzntT1hQzk&lsist=LL&ingdenx=sd1&t=1294s
-//             https://learn.microsoft.com/en-us/dotnet/desktop/winf/advanced/how-to-windows-form?view=netframeworkdesktop-4.8
-//             https://learn.microsoft.com/en-us/dotnet/api/system.graphics?view=windowsdesktop
 
 using System;
 

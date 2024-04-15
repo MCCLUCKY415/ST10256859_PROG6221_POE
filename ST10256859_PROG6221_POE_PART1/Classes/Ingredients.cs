@@ -20,12 +20,21 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                 {
                     Console.Write("\n\nPlease enter the total number of ingredients that will be used: ");
                     NumIngredients = Convert.ToInt32(Console.ReadLine());
+
+                    if (NumIngredients <= 0 || NumIngredients > 1000000000)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n\nPlease enter a valid number!");
+                        Console.ResetColor();
+                        continue;
+                    }
+
                     inputValid = true;
                 }
                 catch (FormatException)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nPlease enter a number!");
+                    Console.WriteLine("\n\nPlease enter a number!");
                     Console.ResetColor();
                     continue;
                 }
@@ -48,12 +57,21 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                         {
                             Console.Write("\nPlease enter the quantity of measurements for ingredient " + (i + 1) + ": ");
                             quantity = Convert.ToDouble(Console.ReadLine());
+
+                            if (quantity <= 0 || quantity > 1000000000)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("\n\nPlease enter a valid number!\n");
+                                Console.ResetColor();
+                                continue;
+                            }
+
                             quantityValid = true;
                         }
                         catch (FormatException)
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("\nPlease enter a number!");
+                            Console.WriteLine("\n\nPlease enter a number!\n");
                             Console.ResetColor();
                             continue;
                         }
