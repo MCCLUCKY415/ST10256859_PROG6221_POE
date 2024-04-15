@@ -47,19 +47,20 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         {
             if (ing != null && ing.Length > 0 && steps != null && steps.Length > 0)
             {
-                Console.WriteLine("\n            RECIPE            ");
-                Console.WriteLine("*******************************");
-                Console.WriteLine("Ingredients:");
-                foreach (var ingredient in ing)
+                Console.WriteLine("\n          RECIPE            ");
+                Console.WriteLine("****************************");
+                Console.WriteLine("Ingredients:\n");
+                for (int i = 0; i < ing.Length; i++)
                 {
-                    Console.WriteLine(ingredient.IngQuantity + " " + ingredient.IngUnitOfMeasure + " " + ingredient.IngName);
+                    Console.WriteLine((i + 1) + ". " + ing[i].IngQuantity + " " + ing[i].IngUnitOfMeasure + " " + ing[i].IngName);
                 }
 
-                Console.WriteLine("\nSteps:");
-                foreach (var step in steps)
+                Console.WriteLine("\nSteps:\n");
+                for (int i = 0; i < steps.Length; i++)
                 {
-                    Console.WriteLine(step.StepDescription);
+                    Console.WriteLine((i + 1) + ". " + steps[i].StepDescription);
                 }
+                Console.WriteLine("****************************\n\n");
             }
             else
             {
@@ -71,20 +72,29 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         {
             Ingredients[] ing = new Ingredients[0];
             Steps[] stp = new Steps[0];
-
+            int choice;
             while (true)
             {
-                Console.WriteLine("\n            MENU            ");
-                Console.WriteLine("*****************************");
-                Console.WriteLine("\n1) Enter a new recipe");
-                Console.WriteLine("2) Scale recipe");
-                Console.WriteLine("3) Reset quantities");
-                Console.WriteLine("4) Clear all data");
-                Console.WriteLine("5) Exit");
-                Console.WriteLine("*****************************");
-                Console.Write("\nEnter your choice: ");
-                int choice = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    Console.WriteLine("\n****************************");
+                    Console.WriteLine("            MENU            ");
+                    Console.WriteLine("****************************");
+                    Console.WriteLine("1) Enter a new recipe");
+                    Console.WriteLine("2) Scale recipe");
+                    Console.WriteLine("3) Reset quantities");
+                    Console.WriteLine("4) Clear all data");
+                    Console.WriteLine("5) Exit");
+                    Console.WriteLine("****************************");
 
+                    Console.Write("Enter your choice: ");
+                    choice = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("\n\nPlease enter a number thats on the menu!\n");
+                    continue;
+                }
                 if (choice == 1)
                 {
                     ing = this.ing.GetIngredients();
@@ -109,6 +119,11 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                 else if (choice == 5)
                 {
                     return;
+                }
+                else
+                {
+                    Console.WriteLine("\n\nPlease enter a number thats on the menu!\n");
+                    continue;
                 }
 
                 DisplayRecipe(ing, stp);
