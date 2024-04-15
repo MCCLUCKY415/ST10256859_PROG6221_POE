@@ -34,6 +34,9 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                     Console.Write("\nPlease enter the name of ingredient " + (i + 1) + ": ");
                     string name = Console.ReadLine();
 
+                    Console.Write("\nPlease enter the unit of measurement that will be used for ingredient " + (i + 1) + " (tablespoons, litres, etc.): ");
+                    string measurement = Console.ReadLine();
+
                     double quantity = 0;
                     bool quantityValid = false;
 
@@ -41,7 +44,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                     {
                         try
                         {
-                            Console.Write("\nPlease enter the quantity of ingredient " + (i + 1) + ": ");
+                            Console.Write("\nPlease enter the quantity of measurements for ingredient " + (i + 1) + ": ");
                             quantity = Convert.ToDouble(Console.ReadLine());
                             quantityValid = true;
                         }
@@ -51,9 +54,6 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                             continue;
                         }
                     }
-
-                    Console.Write("\nPlease enter the unit of measurement that will be used for ingredient " + (i + 1) + " (e.g. a tablespoon of sugar): ");
-                    string measurement = Console.ReadLine();
 
                     ing[i] = new Ingredients { IngName = name, IngQuantity = quantity, IngUnitOfMeasure = measurement, OriginalIngQuantity = quantity };
                 }
