@@ -20,6 +20,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         public double IngQuantity { get; set; }
         public double OriginalIngQuantity { get; set; }
         public int NumIngredients { get; set; } = 0;
+        public string OriginalIngUnitOfMeasure { get; set; }
 
         public Ingredients[] GetIngredients()
         {
@@ -56,7 +57,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                     Console.Write("\nPlease enter the name of ingredient " + (i + 1) + ": ");
                     string name = Console.ReadLine();
 
-                    Console.Write("\nPlease enter the unit of measurement that will be used for ingredient " + (i + 1) + " (tablespoons, litres, etc.): ");
+                    Console.Write("\nPlease enter the unit of measurement that will be used for ingredient " + (i + 1) + " (tablespoons, teaspoons, litres, etc.): ");
                     string measurement = Console.ReadLine();
 
                     double quantity = 0;
@@ -88,7 +89,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                         }
                     }
 
-                    ing[i] = new Ingredients { IngName = name, IngQuantity = quantity, IngUnitOfMeasure = measurement, OriginalIngQuantity = quantity };
+                    ing[i] = new Ingredients { IngName = name, IngQuantity = quantity, IngUnitOfMeasure = measurement, OriginalIngQuantity = quantity, OriginalIngUnitOfMeasure = measurement };
                 }
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\n\nIngredients successfully saved!\n\n");

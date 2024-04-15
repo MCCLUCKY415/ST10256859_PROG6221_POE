@@ -14,17 +14,20 @@ using System;
 
 namespace ST10256859_PROG6221_POE_PART1.Classes
 {
+    // This class is responsible for displaying the recipe, displaying the menu, and handling the main menu.
     public class RecipeProcesses
     {
-        private Ingredients ing = new Ingredients();
-        private Steps stp = new Steps();
-        private AlteringRecipeProcesses altRecipe = new AlteringRecipeProcesses();
+        private Ingredients ing = new Ingredients();//creating an instance of the Ingredients class
+        private Steps stp = new Steps();//creating an instance of the Steps class
+        private AlteringRecipeProcesses altRecipe = new AlteringRecipeProcesses();//creating an instance of the AlteringRecipeProcesses class
 
+        // This is the DisplayRecipe method of the AlteringRecipeProcesses class.
+        // It takes two parameters: an array of Ingredients objects and an array of Steps objects.
         public void DisplayRecipe(Ingredients[] ing, Steps[] steps)
         {
-            if (ing != null && ing.Length > 0 && steps != null && steps.Length > 0)
+            if (ing != null && ing.Length > 0 && steps != null && steps.Length > 0)//checking if the ingredients and steps arrays are not null and have a length greater than 0
             {
-                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.ForegroundColor = ConsoleColor.Magenta;//
                 Console.WriteLine("\n\n\n****************************");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("          RECIPE            ");
@@ -32,7 +35,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                 Console.WriteLine("****************************");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Ingredients:");
-                for (int i = 0; i < ing.Length; i++)
+                for (int i = 0; i < ing.Length; i++)//looping through the ingredients array
                 {
                     Console.WriteLine("~ " + ing[i].IngQuantity + " " + ing[i].IngUnitOfMeasure + " " + ing[i].IngName);
                 }
