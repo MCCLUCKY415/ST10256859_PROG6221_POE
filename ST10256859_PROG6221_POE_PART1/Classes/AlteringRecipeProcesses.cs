@@ -21,7 +21,8 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
         private Steps stp = new Steps();
 
-        // This is the ScaleRecipe method of the AlteringRecipeProcesses class.
+        // This is the ScaleRecipe method, it calculates the new quantity of each ingredient based on the scale factor provided by the user.
+        // It only scales the original recipe so it a user scales over and over it'll display the original recipe scaled, not the scaled recipe being further scaled.
         public void ScaleRecipe(Ingredients[] ing, double factor)
         {
             // Check if the scale factor is one of the allowed values (0,5 for half, 2 for double, or 3 for triple).
