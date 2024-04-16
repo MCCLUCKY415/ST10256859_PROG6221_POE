@@ -73,7 +73,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             {
                 // If there are no ingredients or steps to display, inform the user.
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\n\nNo recipe to display. Please enter a new recipe first!\n\n");
+                Console.WriteLine("\n\nThere is no recipe to display. Please enter a new recipe first!\n\n");
                 Console.ResetColor();
             }
         }
@@ -143,7 +143,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                     if (ing.Length == 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\n\nNo recipe to scale. Please enter a new recipe first!\n\n");
+                        Console.WriteLine("\n\nThere is no recipe to scale. Please enter a new recipe first!\n\n");
                         Console.ResetColor();
                         continue;
                     }
@@ -151,7 +151,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                     // Prompt the user to enter a scale factor until they enter a valid one.
                     while (true)
                     {
-                        Console.Write("\n\nPlease enter the number you would like to scale the recipe by (Put in '0.5' for half, '2' for double or '3' for triple): ");
+                        Console.Write("\n\nPlease enter the number you would like to scale the recipe by (Put in '0,5' for half, '2' for double or '3' for triple): ");
                         try
                         {
                             // Try to convert the user's input to a double.
@@ -161,7 +161,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                             if (factor != 0.5 && factor != 2 && factor != 3)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("\n\n\nInvalid input. Please enter '0.5' for half, '2' for double, or '3' for triple.\n\n");
+                                Console.WriteLine("\n\n\nInvalid input. Please enter '0,5' for half, '2' for double, or '3' for triple.\n\n");
                                 Console.ResetColor();
                                 continue;
                             }
@@ -177,7 +177,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                         {
                             // If the user's input is not a valid number, display an error message and continue with the next iteration of the loop.
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("\n\n\nInvalid input. Please enter '0.5' for half, '2' for double, or '3' for triple.\n\n");
+                            Console.WriteLine("\n\n\nInvalid input. Please enter '0,5' for half, '2' for double, or '3' for triple.\n\n");
                             Console.ResetColor();
                         }
                     }
@@ -196,7 +196,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
                     // Ask the user to confirm that they want to reset the quantities.
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("\n\n\nAre you sure you want to reset all quantities? (yes/no): ");
+                    Console.Write("\n\n\nAre you sure you want to reset all quantities? (y/n): ");
                     Console.ResetColor();
                     string confirm = Console.ReadLine();
 
@@ -230,7 +230,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
                     // Ask the user to confirm that they want to clear all recipe data.
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("\n\n\nAre you sure you want to clear all recipe data? (yes/no): ");
+                    Console.Write("\n\n\nAre you sure you want to clear all recipe data? (y/n): ");
                     Console.ResetColor();
                     string confirm = Console.ReadLine();
 
@@ -269,3 +269,5 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         }
     }
 }
+
+//-----------------------------------------------------------------------------END OF FILE-----------------------------------------------------------------------------
