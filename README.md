@@ -14,7 +14,7 @@ The Recipe Creating Console Application is a command-line application that was c
 
 ## Before You Can Compile and Run The Application
 
-1. **Ensure you have Visual Studio downloaded or you won't be able to run the project.**
+1. **Ensure that you have Visual Studio downloaded or you won't be able to run the project.**
 2. If you do not have Visual Studio then you can download it using this link https://visualstudio.microsoft.com/vs/community/
 3. Make sure you download Visual Studio Community, because it's free.
 4. Once downloaded, install Visual Studio Community.
