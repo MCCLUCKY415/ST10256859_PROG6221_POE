@@ -10,6 +10,8 @@
 //             Microsoft Copilot for assisting me with finding and fixing errors in the code.
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ST10256859_PROG6221_POE_PART1.Classes
 {
@@ -18,15 +20,16 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
     {
         // Declare properties for the Ingredients class.
         public string IngName { get; set; }  // The name of the ingredient.
-
         public string IngUnitOfMeasure { get; set; }  // The unit of measurement for the ingredient (e.g., tablespoons, teaspoons, litres, etc.).
         public double IngQuantity { get; set; }  // The quantity of the ingredient.
         public double OriginalIngQuantity { get; set; }  // The original quantity of the ingredient. This is used for resetting quantities after scaling.
         public int NumIngredients { get; set; } = 0;  // The total number of ingredients. This is used for creating an array of Ingredients objects.
         public string OriginalIngUnitOfMeasure { get; set; }  // The original unit of measurement for the ingredient. This is used for resetting units of measurement after scaling.
+        public double Calories { get; set; }  // The number of calories.
+        public string FoodGroup { get; set; }  // The food group of the ingredient.
 
         // This is the GetIngredients method of the Ingredients class.
-        public Ingredients[] GetIngredients()
+        public List<Ingredients> GetIngredients()
         {
             // Declare a boolean variable to check if the user's input is valid.
             bool inputValid = false;
@@ -118,15 +121,23 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                         }
                     }
 
+                    // Prompt the user to enter the number of calories for the ingredient.
+                    Console.Write("Please enter the number of calories for ingredient " + (i + 1) + ": ");
+                    double calories = Convert.ToDouble(Console.ReadLine());
+
+                    // Prompt the user to enter the food group for the ingredient.
+                    Console.Write("Please enter the food group for ingredient " + (i + 1) + " (fruit, vegetable, grain, protein, dairy, fat): ");
+                    string foodGroup = Console.ReadLine();
+
                     // Create a new Ingredients object with the entered details and add it to the array.
-                    ing[i] = new Ingredients { IngName = name, IngQuantity = quantity, IngUnitOfMeasure = measurement, OriginalIngQuantity = quantity, OriginalIngUnitOfMeasure = measurement };
+                    ing[i] = new Ingredients { IngName = name, IngQuantity = quantity, IngUnitOfMeasure = measurement, OriginalIngQuantity = quantity, OriginalIngUnitOfMeasure = measurement, Calories = calories, FoodGroup = foodGroup };
                 }
 
                 // Display a success message and return the array of Ingredients objects.
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\n\nIngredients successfully saved!\n\n");
                 Console.ResetColor();
-                return ing;
+                return ing.ToList();
             }
 
             // If the user didn't enter a valid number of ingredients, return null.

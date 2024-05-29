@@ -11,6 +11,8 @@
 //             Microsoft Copilot for assisting me with finding and fixing errors in the code.
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ST10256859_PROG6221_POE_PART1.Classes
 {
@@ -25,6 +27,77 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
         // Creating an instance of the AlteringRecipeProcesses class
         private AlteringRecipeProcesses altRecipe = new AlteringRecipeProcesses();
+
+        // Creating a list of Recipe objects
+        private List<Recipe> recipes = new List<Recipe>();
+
+        // Method to allow the user to enter a new recipe.
+        public void EnterNewRecipe()
+        {
+            // Prompt the user to enter the name of the recipe.
+            Console.Write("\nEnter the name of the recipe: ");
+            string recipeName = Console.ReadLine();
+
+            // Get ingredients and steps for the recipe.
+            Ingredients[] ingredients = GetIngredients();
+            Steps[] steps = GetSteps();
+
+            // Convert arrays to lists.
+            List<Ingredients> ingredientList = new List<Ingredients>(ingredients);
+            List<Steps> stepList = new List<Steps>(steps);
+
+            // Create a new recipe object and add it to the recipes list.
+            Recipe recipe = new Recipe(recipeName, ingredientList, stepList);
+            recipes.Add(recipe);
+        }
+
+        // Method to display all recipes in alphabetical order.
+        public void DisplayAllRecipes()
+        {
+            if (recipes.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nNo recipes found.\n");
+                Console.ResetColor();
+                return;
+            }
+
+            var sortedRecipes = recipes.OrderBy(r => r.RecipeName);
+
+            Console.WriteLine("\nRecipes:");
+            foreach (var recipe in sortedRecipes)
+            {
+                Console.WriteLine(recipe.RecipeName);
+            }
+        }
+
+        // Method to select a recipe to display.
+        private void SelectRecipeToDisplay()
+        {
+            Console.Write("\nEnter the name of the recipe you want to display: ");
+            string recipeName = Console.ReadLine();
+
+            Recipe recipe = recipes.Find(r => r.RecipeName.Equals(recipeName, StringComparison.OrdinalIgnoreCase));
+
+            if (recipe == null)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nRecipe not found.\n");
+                Console.ResetColor();
+            }
+            else
+            {
+                DisplayRecipe(recipe);
+            }
+        }
+
+        // Method to notify the user when calories exceed 300.
+        private void CaloriesExceeded(Recipe recipe)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n\nWarning: Total calories exceed 300!");
+            Console.ResetColor();
+        }
 
         // This is the DisplayRecipe method of the AlteringRecipeProcesses class.
         // It takes two parameters: an array of Ingredients objects and an array of Steps objects.
@@ -60,6 +133,15 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                 {
                     // Display the step number and description.
                     Console.WriteLine("Step " + (i + 1) + ") " + steps[i].StepDescription);
+                }
+
+                // Display total calories of recipe.
+                Console.WriteLine($"Total Calories: {recipe.TotalCalories}");
+
+                // Check if total calories exceed 300 and notify user.
+                if (recipe.TotalCalories > 300)
+                {
+                    NotifyCaloriesExceeded(recipe);
                 }
 
                 // Set the console text color back to magenta and display the end of the recipe.
@@ -106,7 +188,9 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                     Console.WriteLine("3) Scale recipe");
                     Console.WriteLine("4) Reset quantities");
                     Console.WriteLine("5) Clear all data");
-                    Console.WriteLine("6) Exit");
+                    Console.WriteLine("6) Display all recipes");
+                    Console.WriteLine("7) Select what recipe to display");
+                    Console.WriteLine("8) Exit");
                     Console.WriteLine("****************************");
 
                     // Prompt the user to enter their choice.
@@ -252,8 +336,20 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                         Console.ResetColor();
                     }
                 }
-                // If the user chose option 6, exit the program.
+
                 else if (choice == 6)
+                {
+                    DisplayAllRecipes();
+                    continue;
+                }
+
+                else if (choice == 7)
+                {
+                    SelectRecipeToDisplay();
+                    continue;
+                }
+                // If the user chose option 8, exit the program.
+                else if (choice == 8)
                 {
                     return;
                 }
