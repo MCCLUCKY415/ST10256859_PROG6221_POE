@@ -6,23 +6,23 @@
 //             https://stackoverflow.com/questions/71967411/how-can-i-try-catch-an-exception-for-a-negative-number-in-c
 //             https://youtu.be/QqWfw_CFR6Q?si=OWgC9KPJosQBqu5V
 //             https://youtu.be/IHMmPVEOT64?si=FN64GWD1dU8C1i4E
+//             https://youtu.be/aNTDJ9bnRU4?si=2f7p21l9Uz2IPAam
 //             GitHub Copilot for assisting with the structure of the code.
 //             Microsoft Copilot for assisting me with finding and fixing errors in the code.
 
 using System;
+using System.Collections.Generic;
 
 namespace ST10256859_PROG6221_POE_PART1.Classes
 {
     // This class is responsible for handling the steps of a recipe.
     public class Steps
     {
-        // Declare properties for the Steps class.
         public string StepDescription { get; set; }  // The description of the step.
-
         public int NumSteps { get; set; } = 0;  // The total number of steps. This is used for creating an array of Steps objects.
 
         // This is the GetSteps method of the Steps class.
-        public Steps[] GetSteps()
+        public List<Steps> GetSteps()
         {
             // The try block contains code that might throw an exception.
             try
@@ -53,7 +53,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             }
 
             // Create an array of Steps objects with a size equal to the number of steps.
-            Steps[] stp = new Steps[NumSteps];
+            List<Steps> stp = new List<Steps>(NumSteps);
 
             // Loop through the array and prompt the user to enter the description of each step.
             for (int i = 0; i < NumSteps; i++)
@@ -62,7 +62,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                 string description = Console.ReadLine();
 
                 // Create a new Steps object with the entered description and add it to the array.
-                stp[i] = new Steps { StepDescription = description };
+                stp.Add(new Steps { StepDescription = description });
             }
 
             // Display a success message and return the array of Steps objects.

@@ -6,6 +6,7 @@
 //             https://stackoverflow.com/questions/71967411/how-can-i-try-catch-an-exception-for-a-negative-number-in-c
 //             https://youtu.be/QqWfw_CFR6Q?si=OWgC9KPJosQBqu5V
 //             https://youtu.be/IHMmPVEOT64?si=FN64GWD1dU8C1i4E
+//             https://youtu.be/aNTDJ9bnRU4?si=2f7p21l9Uz2IPAam
 //             GitHub Copilot for assisting with the structure of the code.
 //             Microsoft Copilot for assisting me with finding and fixing errors in the code.
 
@@ -18,7 +19,6 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
     // This class is responsible for handling the ingredients of a recipe.
     public class Ingredients
     {
-        // Declare properties for the Ingredients class.
         public string IngName { get; set; }  // The name of the ingredient.
         public string IngUnitOfMeasure { get; set; }  // The unit of measurement for the ingredient (e.g., tablespoons, teaspoons, litres, etc.).
         public double IngQuantity { get; set; }  // The quantity of the ingredient.
@@ -69,7 +69,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                 }
 
                 // Create an array of Ingredients objects with a size equal to the number of ingredients.
-                Ingredients[] ing = new Ingredients[NumIngredients];
+                List<Ingredients> ing = new List<Ingredients>(NumIngredients);
 
                 // Loop through the array and prompt the user to enter the details of each ingredient.
                 for (int i = 0; i < NumIngredients; i++)
@@ -130,9 +130,10 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                     string foodGroup = Console.ReadLine();
 
                     // Create a new Ingredients object with the entered details and add it to the array.
-                    ing[i] = new Ingredients { IngName = name, IngQuantity = quantity, IngUnitOfMeasure = measurement, OriginalIngQuantity = quantity, OriginalIngUnitOfMeasure = measurement, Calories = calories, FoodGroup = foodGroup };
-                }
+                    Ingredients ingredient = new Ingredients { IngName = name, IngQuantity = quantity, IngUnitOfMeasure = measurement, OriginalIngQuantity = quantity, OriginalIngUnitOfMeasure = measurement, Calories = calories, FoodGroup = foodGroup };
+                    ing.Add(ingredient);
 
+                }
                 // Display a success message and return the array of Ingredients objects.
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\n\nIngredients successfully saved!\n\n");

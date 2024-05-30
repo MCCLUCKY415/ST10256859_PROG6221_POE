@@ -10,6 +10,7 @@
 //             Microsoft Copilot for assisting me with finding and fixing errors in the code.
 
 using System;
+using System.Collections.Generic;
 
 namespace ST10256859_PROG6221_POE_PART1.Classes
 {
@@ -23,7 +24,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
         // This is the ScaleRecipe method, it calculates the new quantity of each ingredient based on the scale factor provided by the user.
         // It only scales the original recipe so it a user scales over and over it'll display the original recipe scaled, not the scaled recipe being further scaled.
-        public void ScaleRecipe(Ingredients[] ing, double factor)
+        public void ScaleRecipe(List<Ingredients> ing, double factor)
         {
             // Check if the scale factor is one of the allowed values (0,5 for half, 2 for double, or 3 for triple).
             // If not, display an error message and return.
@@ -37,9 +38,9 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
             // Check if there are any ingredients to scale.
             // If not, display an error message and return.
-            if (ing != null && ing.Length > 0)
+            if (ing != null && ing.Count > 0)
             {
-                // Loop through the array of Ingredients objects and scale the quantity of each ingredient by the scale factor.
+                // Loop through the list of Ingredients objects and scale the quantity of each ingredient by the scale factor.
                 foreach (var ingredient in ing)
                 {
                     // Reset the unit of measurement to the original one before each scaling operation.
@@ -90,13 +91,13 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         }
 
         // This is the ResetNewQuantities method of the AlteringRecipeProcesses class.
-        public void ResetNewQuantities(Ingredients[] ing)
+        public void ResetNewQuantities(List<Ingredients> ing)
         {
             // Check if there are any ingredients to reset.
             // If not, display an error message and return.
-            if (ing != null && ing.Length > 0)
+            if (ing != null && ing.Count > 0)
             {
-                // Loop through the array of Ingredients objects and reset the quantity and unit of measurement of each ingredient to their original values.
+                // Loop through the list of Ingredients objects and reset the quantity and unit of measurement of each ingredient to their original values.
                 foreach (var ingredient in ing)
                 {
                     ingredient.IngQuantity = ingredient.OriginalIngQuantity;

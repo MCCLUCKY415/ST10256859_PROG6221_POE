@@ -12,16 +12,16 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
         public void AddRecipe(string recipeName)
         {
-           Recipe newRecipe = new Recipe(recipeName);
-           recipes.Add(newRecipe);
+            Recipe newRecipe = new Recipe(recipeName, new List<Ingredients>(), new List<Steps>());
+            recipes.Add(newRecipe);
         }
 
-        public void AlphabeticalDisay()
+        public void AlphabeticalDisplay()
         {
-            var sortedRecipes = recipes.OrderBy(rec => rec.Name);
+            var sortedRecipes = recipes.OrderBy(rec => rec.RecipeName);
             foreach (var recipe in sortedRecipes)
             {
-                Console.WriteLine(recipe.Name);
+                Console.WriteLine(recipe.RecipeName);
             }
         }
     }
