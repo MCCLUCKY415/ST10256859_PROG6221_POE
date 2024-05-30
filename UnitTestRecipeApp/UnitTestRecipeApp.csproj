@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ST10256859_PROG6221_POE_PART1\ST10256859_PROG6221_POE_PART1.csproj">
+    <ProjectReference Include="..\ST10256859_PROG6221_POE_PART1\ST10256859_PROG6221_POE.csproj">
       <Project>{B0DDE9B0-28AF-429D-81CE-3C7240FF3F9A}</Project>
-      <Name>ST10256859_PROG6221_POE_PART1</Name>
+      <Name>ST10256859_PROG6221_POE</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
