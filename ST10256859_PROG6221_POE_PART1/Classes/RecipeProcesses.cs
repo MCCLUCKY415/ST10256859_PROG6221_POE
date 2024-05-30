@@ -16,7 +16,7 @@ using System.Linq;
 
 namespace ST10256859_PROG6221_POE_PART1.Classes
 {
-    public delegate void CaloriesExceededHandler(Recipe recipe);
+    public delegate void CaloriesExceeded(Recipe recipe);
 
     public class RecipeProcesses
     {
@@ -27,7 +27,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         private List<Ingredients> ingredients = new List<Ingredients>();
         private List<Steps> steps = new List<Steps>();
 
-        public event CaloriesExceededHandler CaloriesExceededEvent;
+        public event CaloriesExceeded CaloriesExceededEvent;
 
         public RecipeProcesses()
         {
@@ -36,7 +36,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
         public void EnterNewRecipe()
         {
-            Console.Write("\nEnter the name of the recipe: ");
+            Console.Write("\n\nEnter the name of the recipe: ");
             string recipeName = Console.ReadLine();
 
             ingredients = GetIngredients();
@@ -44,21 +44,16 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
             Recipe recipe = new Recipe(recipeName, ingredients, steps);
             recipes.Add(recipe);
-
-            if (recipe.TotalCalories > 300)
-            {
-                OnCaloriesExceeded(recipe);
-            }
         }
 
         private void CaloriesExceeded(Recipe recipe)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\n\nWarning: Total calories exceed 300!");
+            Console.WriteLine("\n\n\n\nWarning: Total calories exceed 300!\n");
             Console.ResetColor();
         }
 
-        private void OnCaloriesExceeded(Recipe recipe)
+        private void WhenCaloriesExceed(Recipe recipe)
         {
             CaloriesExceededEvent?.Invoke(recipe);
         }
@@ -68,18 +63,31 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             if (recipes.Count == 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nNo recipes found.\n");
+                Console.WriteLine("\n\nNo recipes found.\n\n");
                 Console.ResetColor();
                 return;
             }
 
             var sortedRecipes = recipes.OrderBy(r => r.RecipeName);
 
-            Console.WriteLine("\nRecipes:");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\n\n\n****************************");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("          RECIPES            ");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\n****************************");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
             foreach (var recipe in sortedRecipes)
             {
                 Console.WriteLine(recipe.RecipeName);
             }
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\n****************************\n\n\n");
+            Console.ResetColor();
         }
 
         private void SelectRecipeToDisplay()
@@ -104,6 +112,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         private List<Ingredients> GetIngredients()
         {
             List<Ingredients> ingredientsList = new List<Ingredients>();
+            double totalCalories = 0;
 
             bool inputValid = false;
 
@@ -124,10 +133,10 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
                     for (int i = 0; i < numIngredients; i++)
                     {
-                        Console.Write("\nPlease enter the name of ingredient " + (i + 1) + ": ");
+                        Console.Write("\n\nPlease enter the name of ingredient " + (i + 1) + ": ");
                         string name = Console.ReadLine();
 
-                        Console.Write("\nPlease enter the unit of measurement that will be used for ingredient " + (i + 1) + " (tablespoons, teaspoons, litres, etc.): ");
+                        Console.Write("\n\nPlease enter the unit of measurement that will be used for ingredient " + (i + 1) + " (tablespoons, teaspoons, litres, etc.): ");
                         string measurement = Console.ReadLine();
 
                         double quantity = 0;
@@ -137,7 +146,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                         {
                             try
                             {
-                                Console.Write("\nPlease enter the quantity of measurements for ingredient " + (i + 1) + ": ");
+                                Console.Write("\n\nPlease enter the quantity of measurements for ingredient " + (i + 1) + ": ");
                                 quantity = Convert.ToDouble(Console.ReadLine());
 
                                 if (quantity <= 0 || quantity > 1000000000)
@@ -158,10 +167,10 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                             }
                         }
 
-                        Console.Write("Please enter the number of calories for ingredient " + (i + 1) + ": ");
+                        Console.Write("\n\nPlease enter the number of calories for ingredient " + (i + 1) + ": ");
                         double calories = Convert.ToDouble(Console.ReadLine());
 
-                        Console.Write("Please enter the food group for ingredient " + (i + 1) + " (fruit, vegetable, grain, protein, dairy, fat): ");
+                        Console.Write("\n\nPlease enter the food group for ingredient " + (i + 1) + " (fruit, vegetable, grain, protein, dairy, fat): ");
                         string foodGroup = Console.ReadLine();
 
                         Ingredients ingredient = new Ingredients
@@ -176,10 +185,19 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                         };
 
                         ingredientsList.Add(ingredient);
+
+                        totalCalories += calories;
+
+                        if (totalCalories > 300)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\n\nWarning: Total calories exceed 300!");
+                            Console.ResetColor();
+                        }
                     }
 
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("\n\nIngredients successfully saved!\n\n");
+                    Console.WriteLine("\n\n\nIngredients successfully saved!\n\n");
                     Console.ResetColor();
 
                     inputValid = true;
@@ -218,7 +236,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
 
                     for (int i = 0; i < numSteps; i++)
                     {
-                        Console.Write("\nPlease enter the description of step " + (i + 1) + ": ");
+                        Console.Write("\n\nPlease enter the description of step " + (i + 1) + ": ");
                         string description = Console.ReadLine();
 
                         Steps step = new Steps
@@ -231,7 +249,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                     }
 
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("\n\nSteps successfully saved!\n\n");
+                    Console.WriteLine("\n\n\nSteps successfully saved!\n\n");
                     Console.ResetColor();
 
                     inputValid = true;
@@ -247,14 +265,14 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             return stepsList;
         }
 
-        public void DisplayRecipe(List<Ingredients> ing, List<Steps> steps)
+        public void DisplayRecipe(string recipeName, List<Ingredients> ing, List<Steps> steps)
         {
             if (ing != null && ing.Count > 0 && steps != null && steps.Count > 0)
             {
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("\n\n\n****************************");
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("          RECIPE            ");
+                Console.WriteLine("          " + recipeName.ToUpper() + "            ");
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("****************************");
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -266,19 +284,37 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                     Console.WriteLine($"~ {ingredient.IngQuantity} {ingredient.IngUnitOfMeasure} {ingredient.IngName}");
                 }
 
+                double totalCalories = ing.Sum(i => i.Calories);
+                Console.Write("\nTotal calories: ");
+
+                if (totalCalories > 300)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(totalCalories);
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(totalCalories);
+                    Console.ResetColor();
+                }
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("\nSteps:");
 
                 foreach (var step in steps)
                 {
-                    Console.WriteLine("Step " + (step.NumSteps) + " " + (step.StepDescription));
+                    Console.WriteLine("~ Step: " + (step.NumSteps) + " " + (step.StepDescription));
                 }
-
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("****************************\n\n");
                 Console.ResetColor();
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\n\nThere is no recipe to display. Please enter a new recipe first!\n\n");
+                Console.WriteLine("\n\n\nThere is no recipe to display. Please enter a new recipe first.\n\n\n");
                 Console.ResetColor();
             }
         }
@@ -384,13 +420,13 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                     {
                         altRecipe.ResetNewQuantities(ingredients);
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("\n\n\nQuantities successfully reset!\n\n");
+                        Console.WriteLine("\n\nQuantities successfully reset!\n\n");
                         Console.ResetColor();
                     }
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\n\nResetting quantities cancelled.\n");
+                        Console.WriteLine("\n\nResetting quantities cancelled.\n\n");
                         Console.ResetColor();
                     }
                 }
@@ -415,13 +451,13 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                         ingredients.Clear();
                         steps.Clear();
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("\n\n\nRecipe data successfully cleared!\n\n");
+                        Console.WriteLine("\n\nRecipe data successfully cleared!\n\n");
                         Console.ResetColor();
                     }
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\n\nData clearing cancelled.\n");
+                        Console.WriteLine("\n\nData clearing cancelled.\n\n");
                         Console.ResetColor();
                     }
                 }

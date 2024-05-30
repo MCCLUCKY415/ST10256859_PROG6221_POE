@@ -25,6 +25,8 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         public List<Ingredients> Ingredients { get; set; }  // List of ingredients in the recipe.
         public List<Steps> Steps { get; set; }  // List of steps in the recipe.
         public double TotalCalories { get; set; }  // Total calories of the recipe.
+        public string FoodGroup { get; set; }  // The food group of the recipe.
+
 
         public Recipe(string recipeName, List<Ingredients> ingredients, List<Steps> steps)
         {
