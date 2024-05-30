@@ -11,6 +11,8 @@ The Recipe Creating Console Application is a command-line application that was c
 - **Scale Recipe**: Users can scale the quantities of ingredients in the recipe by a factor of 0.5 (half), 2 (double), or 3 (triple).
 - **Reset Quantities**: Users can reset the quantities of ingredients in the recipe to their original values.
 - **Clear All Data**: Users can clear all entered recipe data, including ingredients and steps.
+- **Allows for Calorie Input**: Users can input amount of calories and see the total for a recipe.
+- **Allows for Food group Input**: Users can input what food group the ingredients belong to.
 
 ## Before You Can Compile and Run The Application
 
@@ -35,3 +37,5 @@ The Recipe Creating Console Application is a command-line application that was c
 - https://youtu.be/IHMmPVEOT64?si=FN64GWD1dU8C1i4E
 - https://stackoverflow.com/questions/72696/which-is-generally-best-to-use-stringcomparison-ordinalignorecase-or-stringcom
 - GitHub Copilot and Microsoft Copilot for code assistance.
+- https://youtu.be/HYrXogLj7vg?si=YY-XegmPETWcKww7
+- https://youtu.be/aNTDJ9bnRU4?si=ol5tsx5HYGevkKfk
