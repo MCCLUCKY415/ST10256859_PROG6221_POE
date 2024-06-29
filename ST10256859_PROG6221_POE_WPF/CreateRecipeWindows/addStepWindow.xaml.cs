@@ -20,24 +20,32 @@ namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
     /// </summary>
     public partial class addStepWindow : Window
     {
-        private Window createRecipeWindow;
+        private createRecipeWindow createRecipeWin;
 
-        public addStepWindow(Window createRecipeWindow)
+        public addStepWindow(createRecipeWindow crw)
         {
             InitializeComponent();
-            this.createRecipeWindow = createRecipeWindow;
-            this.createRecipeWindow.Hide();
+            this.createRecipeWin = crw;
+            this.createRecipeWin.Hide();
         }
 
         private void AddStepButton_Click(object sender, RoutedEventArgs e)
         {
-
+            string newStepDescription = stepDescriptionTextBox.Text;
+            if (string.IsNullOrEmpty(newStepDescription))
+            {
+                MessageBox.Show("Please enter a step description.");
+                return;
+            }
+            createRecipeWin.newSteps.Add(newStepDescription);
+            stepDescriptionTextBox.Text = "";
+            this.Close();
         }
 
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            this.createRecipeWindow.Show();
+            this.createRecipeWin.Show();
         }
     }
 }

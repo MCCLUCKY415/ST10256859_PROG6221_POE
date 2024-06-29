@@ -65,7 +65,7 @@
         <WrapPanel Grid.Row="1"
                    Grid.Column="0"
                    Margin="10,0,0,10">
-            <Button Content="Add a Recipe"
+            <Button Content="Create a Recipe"
                     Style="{StaticResource ButtonStyle}"
                     Background="#ed8d55"
                     Click="Button_Click" />

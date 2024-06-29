@@ -1,4 +1,5 @@
-﻿using ST10256859_PROG6221_POE_WPF.CreateRecipeWindows;
+﻿using ST10256859_PROG6221_POE_PART1.Classes;
+using ST10256859_PROG6221_POE_WPF.CreateRecipeWindows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +21,20 @@ namespace ST10256859_PROG6221_POE_WPF.Windows
     /// </summary>
     public partial class createRecipeWindow : Window
     {
-        private Window mainWindow;
+        private MainWindow mainWin;
+        
+        public List<string> newSteps { get; set; }
+        public List<Ingredients> newIngredients { get; set; } //change the Ingredients class
+        public string recipeName;
 
-        public createRecipeWindow(Window mainWindow)
+        public createRecipeWindow(MainWindow mw)
         {
             InitializeComponent();
-            this.mainWindow = mainWindow;
-            this.mainWindow.Hide();
+            newSteps = new List<string>();
+            newIngredients = new List<Ingredients>();
+
+            this.mainWin = mw;
+            this.mainWin.Hide();
         }
 
         private void AddIngredient_Click(object sender, RoutedEventArgs e)
@@ -49,7 +57,7 @@ namespace ST10256859_PROG6221_POE_WPF.Windows
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            this.mainWindow.Show();
+            this.mainWin.Show();
         }
     }
 }
