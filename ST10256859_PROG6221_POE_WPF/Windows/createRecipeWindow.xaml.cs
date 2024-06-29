@@ -37,7 +37,8 @@ namespace ST10256859_PROG6221_POE_WPF.Windows
 
         private void AddStep_Click(object sender, RoutedEventArgs e)
         {
-            // Your logic here
+            var addStepWindow = new addStepWindow(this);
+            addStepWindow.Show();
         }
 
         private void SubmitRecipe_Click(object sender, RoutedEventArgs e)

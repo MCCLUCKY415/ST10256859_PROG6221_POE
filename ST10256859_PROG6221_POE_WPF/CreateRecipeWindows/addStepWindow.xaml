@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ST10256859_PROG6221_POE_WPF.CreateRecipeWindows"
         mc:Ignorable="d"
-        Title="addStepWindow" Height="390" Width="1000">
+        Title="addStepWindow" Height="400" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize">
 
     <Window.Resources>
         <!-- Button Style -->
@@ -125,7 +127,7 @@
 
         <!-- Main Panel -->
         <StackPanel Grid.Row="1"
-                    Margin="20">
+                    Margin="20,0,20,10">
 
             <!-- Step Description Section -->
             <Border Background="#454545"
