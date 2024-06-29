@@ -15,13 +15,28 @@ using System.Windows.Shapes;
 namespace ST10256859_PROG6221_POE_WPF.Windows
 {
     /// <summary>
-    /// Interaction logic for AddRecipeWindow.xaml
+    /// Interaction logic for createRecipeWindow.xaml
     /// </summary>
-    public partial class AddRecipeWindow : Window
+    public partial class createRecipeWindow : Window
     {
-        public AddRecipeWindow()
+        public createRecipeWindow()
         {
             InitializeComponent();
+        }
+
+        private void AddIngredient_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddStep_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SubmitRecipe_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -15,16 +15,16 @@ using System.Windows.Shapes;
 namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
 {
     /// <summary>
-    /// Interaction logic for addIngredient.xaml
+    /// Interaction logic for addStep.xaml
     /// </summary>
-    public partial class addIngredient : Window
+    public partial class addStep : Window
     {
-        public addIngredient()
+        public addStep()
         {
             InitializeComponent();
         }
 
-        private void AddIngredientButton_Click(object sender, RoutedEventArgs e)
+        private void AddStepButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

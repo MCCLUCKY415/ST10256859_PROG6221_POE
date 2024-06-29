@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ST10256859_PROG6221_POE_WPF.Windows;
 
 namespace ST10256859_PROG6221_POE_WPF
 {
@@ -28,6 +29,12 @@ namespace ST10256859_PROG6221_POE_WPF
         private void Button_Click()
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var createRecipeWindow = new createRecipeWindow();
+            createRecipeWindow.Show();
         }
     }
 }

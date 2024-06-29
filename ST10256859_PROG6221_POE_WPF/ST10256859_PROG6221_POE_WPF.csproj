@@ -58,10 +58,17 @@
     <Compile Include="CreateRecipeWindows\addIngredient.xaml.cs">
       <DependentUpon>addIngredient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreateRecipeWindows\addStep.xaml.cs">
+      <DependentUpon>addStep.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\createRecipeWindow.xaml.cs">
       <DependentUpon>createRecipeWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="CreateRecipeWindows\addIngredient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateRecipeWindows\addStep.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
