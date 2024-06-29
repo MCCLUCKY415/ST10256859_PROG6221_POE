@@ -5,9 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2.Windows"
         mc:Ignorable="d"
-        Title="createRecipeWindow" Height="1000" Width="1000"
-        MinHeight="500"
-        MinWidth="900">
+        Title="createRecipeWindow" Height="800" Width="1000" MinHeight="500" MinWidth="900">
 
     <Window.Resources>
         <!-- Button Style -->
@@ -81,7 +79,8 @@
                    HorizontalAlignment="Center" Margin="10"/>
 
         <!-- Main Panel for Inputs -->
-        <StackPanel Grid.Column="0" Margin="10,132,565,200" Grid.Row="1">
+        <StackPanel Grid.Column="0" Margin="10,66,565,66" Grid.Row="1">
+            
             <!-- Recipe Name Section -->
             <Border Background="#454545" CornerRadius="10" Margin="10,10,10,10" Padding="20" Height="122">
                 <StackPanel>
@@ -109,7 +108,7 @@
             <!-- Submit Button -->
             <Border Background="#454545" CornerRadius="10" Margin="10,50,10,10" Padding="20" Height="96">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="Submit" Style="{StaticResource ButtonStyle}" x:Name="Submit" FontSize="18" Background="#ed55de" Click="SubmitRecipe_Click" Height="40"/>
+                    <Button Content="Create Recipe" Style="{StaticResource ButtonStyle}" x:Name="Submit" FontSize="18" Background="#ed55de" Click="SubmitRecipe_Click" Height="40"/>
                 </StackPanel>
             </Border>
         </StackPanel>
@@ -117,7 +116,7 @@
         <!-- Message Box -->
         <Border Grid.Row="1" Background="#454545" CornerRadius="10" Margin="450,20,0,20" Padding="10" HorizontalAlignment="Left" Width="535">
             <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontSize="18">
-                <Run Text="To create a recipe, start by entering the name of the recipe. Then add as many ingredients as you want for the recipe. Then add as many steps as you want for the recipe. Then when you're finished, click 'Submit' to save your recipe to the system."/>
+                <Run Text="To create a recipe, start by entering the name of the recipe. Then add as many ingredients as you want for the recipe. Then add as many steps as you want for the recipe. Then when you're finished, click 'Create Recipe' to save your recipe to the system."/>
             </TextBlock>
         </Border>
     </Grid>

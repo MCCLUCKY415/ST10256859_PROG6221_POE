@@ -55,9 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CreateRecipeWindows\addIngredient.xaml.cs">
+      <DependentUpon>addIngredient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\createRecipeWindow.xaml.cs">
       <DependentUpon>createRecipeWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="CreateRecipeWindows\addIngredient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -101,9 +108,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CreateRecipeWindows\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="images\food.jpg" />
   </ItemGroup>
