@@ -55,20 +55,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CreateRecipeWindows\addIngredient.xaml.cs">
-      <DependentUpon>addIngredient.xaml</DependentUpon>
+    <Compile Include="CreateRecipeWindows\addIngredientWindow.xaml.cs">
+      <DependentUpon>addIngredientWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CreateRecipeWindows\addStep.xaml.cs">
-      <DependentUpon>addStep.xaml</DependentUpon>
+    <Compile Include="CreateRecipeWindows\addStepWindow.xaml.cs">
+      <DependentUpon>addStepWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\createRecipeWindow.xaml.cs">
       <DependentUpon>createRecipeWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="CreateRecipeWindows\addIngredient.xaml">
+    <Page Include="CreateRecipeWindows\addIngredientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CreateRecipeWindows\addStep.xaml">
+    <Page Include="CreateRecipeWindows\addStepWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -33,8 +33,13 @@ namespace ST10256859_PROG6221_POE_WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var createRecipeWindow = new createRecipeWindow();
+            var createRecipeWindow = new createRecipeWindow(this);
             createRecipeWindow.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

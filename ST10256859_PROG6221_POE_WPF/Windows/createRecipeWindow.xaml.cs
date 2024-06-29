@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ST10256859_PROG6221_POE_WPF.CreateRecipeWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,24 +20,35 @@ namespace ST10256859_PROG6221_POE_WPF.Windows
     /// </summary>
     public partial class createRecipeWindow : Window
     {
-        public createRecipeWindow()
+        private Window mainWindow;
+
+        public createRecipeWindow(Window mainWindow)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
+            this.mainWindow.Hide();
         }
 
         private void AddIngredient_Click(object sender, RoutedEventArgs e)
         {
-
+            var addIngredientWindow = new addIngredientWindow(this);
+            addIngredientWindow.Show();
         }
 
         private void AddStep_Click(object sender, RoutedEventArgs e)
         {
-
+            // Your logic here
         }
 
         private void SubmitRecipe_Click(object sender, RoutedEventArgs e)
         {
+            // Your logic here
+        }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            this.mainWindow.Show();
         }
     }
 }
