@@ -65,17 +65,36 @@
         <WrapPanel Grid.Row="1"
                    Grid.Column="0"
                    Margin="10,0,0,10">
+            
+            <!-- Create a Recipe Button -->
             <Button Content="Create a Recipe"
                     Style="{StaticResource ButtonStyle}"
                     Background="#ed8d55"
-                    Click="Button_Click" />
+                    Click="CreateRecipe_Click">
+                <Button.ToolTip>
+                    <ToolTip Content="Click to create a new recipe." />
+                </Button.ToolTip>
+            </Button>
+
+            <!-- Display/Alter Recipes Button -->
             <Button Content="Display/Alter Recipes"
                     Style="{StaticResource ButtonStyle}"
-                    Background="#4b97e3" />
+                    Background="#4b97e3"
+                    Click="DisplayAlterRecipe_Click">
+                <Button.ToolTip>
+                    <ToolTip Content="Click to view or modify existing recipes." />
+                </Button.ToolTip>
+            </Button>
+
+            <!-- Exit Button -->
             <Button Content="Exit"
                     Style="{StaticResource ButtonStyle}"
                     Background="#f24147"
-                    Click="Button_Click_1" />
+                    Click="Exit_Click">
+                <Button.ToolTip>
+                    <ToolTip Content="Click to exit the application." />
+                </Button.ToolTip>
+            </Button>
         </WrapPanel>
 
         <!-- Right Panel for Image -->

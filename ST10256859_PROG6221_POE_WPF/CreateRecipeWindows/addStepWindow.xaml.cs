@@ -16,13 +16,13 @@ using System.Windows.Shapes;
 namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
 {
     /// <summary>
-    /// Interaction logic for addStepWindow.xaml
+    /// Interaction logic for AddStepWindow.xaml
     /// </summary>
-    public partial class addStepWindow : Window
+    public partial class AddStepWindow : Window
     {
-        private createRecipeWindow createRecipeWin;
+        private CreateRecipeWindow createRecipeWin;
 
-        public addStepWindow(createRecipeWindow crw)
+        public AddStepWindow(CreateRecipeWindow crw)
         {
             InitializeComponent();
             this.createRecipeWin = crw;

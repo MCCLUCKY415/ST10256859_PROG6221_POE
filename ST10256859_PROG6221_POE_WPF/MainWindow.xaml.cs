@@ -26,18 +26,19 @@ namespace ST10256859_PROG6221_POE_WPF
             InitializeComponent();
         }
 
-        private void Button_Click()
+        private void CreateRecipe_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var createRecipeWindow = new createRecipeWindow(this);
+            var createRecipeWindow = new CreateRecipeWindow(this);
             createRecipeWindow.Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void DisplayAlterRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            var displayAlterWindow = new DisplayAlterWindow(this); 
+            displayAlterWindow.Show();
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

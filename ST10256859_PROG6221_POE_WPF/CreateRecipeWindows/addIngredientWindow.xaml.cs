@@ -16,13 +16,13 @@ using System.Windows.Shapes;
 namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
 {
     /// <summary>
-    /// Interaction logic for addIngredientWindow.xaml
+    /// Interaction logic for AddIngredientWindow.xaml
     /// </summary>
-    public partial class addIngredientWindow : Window
+    public partial class AddIngredientWindow : Window
     {
-        private createRecipeWindow createRecipeWin;
+        private CreateRecipeWindow createRecipeWin;
 
-        public addIngredientWindow(createRecipeWindow crw)
+        public AddIngredientWindow(CreateRecipeWindow crw)
         {
             InitializeComponent();
             this.createRecipeWin = crw;
@@ -31,7 +31,6 @@ namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
 
         private void AddIngredientButton_Click(object sender, RoutedEventArgs e)
         {
-
 
         }
 

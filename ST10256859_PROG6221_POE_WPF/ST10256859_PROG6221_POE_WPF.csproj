@@ -55,20 +55,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CreateRecipeWindows\addIngredientWindow.xaml.cs">
-      <DependentUpon>addIngredientWindow.xaml</DependentUpon>
+    <Compile Include="CreateRecipeWindows\AddIngredientWindow.xaml.cs">
+      <DependentUpon>AddIngredientWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CreateRecipeWindows\addStepWindow.xaml.cs">
-      <DependentUpon>addStepWindow.xaml</DependentUpon>
+    <Compile Include="CreateRecipeWindows\AddStepWindow.xaml.cs">
+      <DependentUpon>AddStepWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\createRecipeWindow.xaml.cs">
-      <DependentUpon>createRecipeWindow.xaml</DependentUpon>
+    <Compile Include="Windows\CreateRecipeWindow.xaml.cs">
+      <DependentUpon>CreateRecipeWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="CreateRecipeWindows\addIngredientWindow.xaml">
+    <Compile Include="Windows\DisplayAlterWindow.xaml.cs">
+      <DependentUpon>DisplayAlterWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="CreateRecipeWindows\AddIngredientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CreateRecipeWindows\addStepWindow.xaml">
+    <Page Include="CreateRecipeWindows\AddStepWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -84,7 +87,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Windows\createRecipeWindow.xaml">
+    <Page Include="Windows\CreateRecipeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DisplayAlterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,6 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\food.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DisplayAlterRecipeWindows\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

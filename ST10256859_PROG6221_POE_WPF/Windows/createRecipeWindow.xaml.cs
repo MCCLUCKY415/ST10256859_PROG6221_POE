@@ -17,9 +17,9 @@ using System.Windows.Shapes;
 namespace ST10256859_PROG6221_POE_WPF.Windows
 {
     /// <summary>
-    /// Interaction logic for createRecipeWindow.xaml
+    /// Interaction logic for CreateRecipeWindow.xaml
     /// </summary>
-    public partial class createRecipeWindow : Window
+    public partial class CreateRecipeWindow : Window
     {
         private MainWindow mainWin;
         
@@ -27,7 +27,7 @@ namespace ST10256859_PROG6221_POE_WPF.Windows
         public List<Ingredients> newIngredients { get; set; } //change the Ingredients class
         public string recipeName;
 
-        public createRecipeWindow(MainWindow mw)
+        public CreateRecipeWindow(MainWindow mw)
         {
             InitializeComponent();
             newSteps = new List<string>();
@@ -39,13 +39,13 @@ namespace ST10256859_PROG6221_POE_WPF.Windows
 
         private void AddIngredient_Click(object sender, RoutedEventArgs e)
         {
-            var addIngredientWindow = new addIngredientWindow(this);
+            var addIngredientWindow = new AddIngredientWindow(this);
             addIngredientWindow.Show();
         }
 
         private void AddStep_Click(object sender, RoutedEventArgs e)
         {
-            var addStepWindow = new addStepWindow(this);
+            var addStepWindow = new AddStepWindow(this);
             addStepWindow.Show();
         }
 
