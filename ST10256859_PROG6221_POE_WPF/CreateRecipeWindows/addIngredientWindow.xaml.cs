@@ -31,7 +31,17 @@ namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
 
         private void AddIngredientButton_Click(object sender, RoutedEventArgs e)
         {
+            string newIngredientName = ingredientNameTextBox.Text;
+            string newIngredientUnitOfMeasurement = unitOfMeasurementTextBox.Text;
+            string newIngredientQuantity = quantityTextBox.Text;
+            string newIngredientNumberOfCalories = caloriesTextBox.Text;
+            string newIngredientFoodGroup = foodGroupComboBox.Text;
 
+            if (string.IsNullOrEmpty(newIngredientName) || string.IsNullOrEmpty(newIngredientUnitOfMeasurement) || string.IsNullOrEmpty(newIngredientQuantity) || string.IsNullOrEmpty(newIngredientNumberOfCalories) || string.IsNullOrEmpty(newIngredientFoodGroup))
+            {
+                MessageBox.Show("Please enter all ingredient details.");
+                return;
+            }
         }
 
         protected override void OnClosed(EventArgs e)

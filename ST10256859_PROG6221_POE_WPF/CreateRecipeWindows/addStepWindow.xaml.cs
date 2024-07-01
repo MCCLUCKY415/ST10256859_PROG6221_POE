@@ -32,6 +32,7 @@ namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
         private void AddStepButton_Click(object sender, RoutedEventArgs e)
         {
             string newStepDescription = stepDescriptionTextBox.Text;
+
             if (string.IsNullOrEmpty(newStepDescription))
             {
                 MessageBox.Show("Please enter a step description.");
