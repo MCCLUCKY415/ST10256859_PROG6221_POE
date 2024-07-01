@@ -16,15 +16,15 @@
         <Style x:Key="ButtonStyle"
                TargetType="Button">
             <Setter Property="Width"
-                    Value="300" />
+                    Value="250" />
             <Setter Property="Height"
-                    Value="60" />
+                    Value="45" />
             <Setter Property="Margin"
                     Value="10" />
             <Setter Property="FontWeight"
                     Value="Bold" />
             <Setter Property="FontSize"
-                    Value="18" />
+                    Value="16" />
             <Setter Property="Foreground"
                     Value="White" />
             <Setter Property="Background"
@@ -49,6 +49,18 @@
 
         <!-- TextBox Style -->
         <Style TargetType="TextBox">
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="Padding"
+                    Value="5" />
+            <Setter Property="FontSize"
+                    Value="14" />
+            <Setter Property="Width"
+                    Value="400" />
+        </Style>
+
+        <!-- ComboBox Style -->
+        <Style TargetType="ComboBox">
             <Setter Property="Margin"
                     Value="5" />
             <Setter Property="Padding"
@@ -116,37 +128,86 @@
 
         <!-- Main Panel for Inputs -->
         <StackPanel Grid.Column="0"
-                    Margin="10,161,605,171"
+                    Margin="10,0,605,25"
                     Grid.Row="1">
 
             <!-- Message Box Section -->
             <Border Background="#454545"
                     CornerRadius="10"
                     Margin="10,10,10,10"
-                    Padding="20"
-                    Height="150">
+                    Padding="10"
+                    Height="90">
                 <StackPanel>
                     <TextBlock TextWrapping="Wrap"
                                HorizontalAlignment="Left"
                                Foreground="White"
-                               FontSize="18"
-                               Height="65"
+                               FontSize="14"
+                               Height="70"
                                Width="420">
-                        <Run Text="Type in the recipe name and click the button to search for and display the desired recipe." />
+                        <Run Text="Type in the name of an ingredient, choose a food group or enter the maximum number of calories and click the button below to search for any saved recipes that fit those catergories." />
                     </TextBlock>
-                    <TextBox x:Name="searchRecipeNameTextBox"
-                             Width="412" />
                 </StackPanel>
             </Border>
 
-
-
-            <!-- Display All Recipes Section -->
+            <!-- Message Box Section -->
             <Border Background="#454545"
                     CornerRadius="10"
-                    Margin="10,10,10,0"
+                    Margin="10,5,10,10"
                     Padding="10"
-                    Height="100">
+                    Height="110">
+                <StackPanel>
+                    <Label Content="Search by Ingredient Name:"
+                           Height="35"
+                           Width="185" />
+                    <TextBox x:Name="searchRecipeNameTextBox"
+                             Width="400" />
+                </StackPanel>
+            </Border>
+
+            <!-- Search Food Group Section -->
+            <Border Background="#454545"
+                    CornerRadius="10"
+                    Margin="10,5,10,10"
+                    Padding="10"
+                    Height="110">
+                <StackPanel>
+                    <Label Content="Search by Food Group:"
+                           Height="35"
+                           Width="150" />
+                    <ComboBox x:Name="foodGroupComboBox"
+                              Width="400">
+                        <ComboBoxItem Content="Vegetables" />
+                        <ComboBoxItem Content="Fruits" />
+                        <ComboBoxItem Content="Grains" />
+                        <ComboBoxItem Content="Proteins" />
+                        <ComboBoxItem Content="Dairy" />
+                        <ComboBoxItem Content="Fats/Oils" />
+                        <ComboBoxItem Content="-- --" />
+                    </ComboBox>
+                </StackPanel>
+            </Border>
+
+            <!-- Search Calorie Section -->
+            <Border Background="#454545"
+                    CornerRadius="10"
+                    Margin="10,5,10,10"
+                    Padding="10"
+                    Height="110">
+                <StackPanel>
+                    <Label Content="Search by Max Calories:"
+                           Height="35"
+                           Width="160" />
+                    <TextBox x:Name="searchMaxCaloriesTextBox"
+                             Width="400" />
+                </StackPanel>
+            </Border>
+
+            <!-- Search Recipes Button Section -->
+            <Border Background="#454545"
+                    CornerRadius="10"
+                    Margin="10,5,10,0"
+                    Padding="10"
+                    Height="90">
                 <StackPanel>
                     <Button Content="Search For a Recipe"
                             Style="{StaticResource ButtonStyle}"
