@@ -61,6 +61,15 @@
     <Compile Include="CreateRecipeWindows\AddStepWindow.xaml.cs">
       <DependentUpon>AddStepWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DisplayAlterRecipeWindows\DisplayAllRecipesWindow.xaml.cs">
+      <DependentUpon>DisplayAllRecipesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DisplayAlterRecipeWindows\ScaleRecipeWindow.xaml.cs">
+      <DependentUpon>ScaleRecipeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DisplayAlterRecipeWindows\SearchForRecipeWindow.xaml.cs">
+      <DependentUpon>SearchForRecipeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\CreateRecipeWindow.xaml.cs">
       <DependentUpon>CreateRecipeWindow.xaml</DependentUpon>
     </Compile>
@@ -72,6 +81,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CreateRecipeWindows\AddStepWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisplayAlterRecipeWindows\DisplayAllRecipesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisplayAlterRecipeWindows\ScaleRecipeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisplayAlterRecipeWindows\SearchForRecipeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,8 +152,6 @@
   <ItemGroup>
     <Resource Include="images\food.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DisplayAlterRecipeWindows\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

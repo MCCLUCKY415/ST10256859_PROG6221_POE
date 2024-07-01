@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,21 +32,20 @@ namespace ST10256859_PROG6221_POE_WPF.Windows
 
         private void DisplayAllRecipesButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var displayAllRecipesWindow = new DisplayAllRecipesWindow(this);
+            displayAllRecipesWindow.Show();
         }
 
         private void SearchForRecipeButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var searchForRecipeWindow = new SearchForRecipeWindow(this);
+            searchForRecipeWindow.Show();
         }
 
         private void ScaleRecipeButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void ResetRecipeQuantitiesButton_Click(object sender, RoutedEventArgs e)
-        {
+            var scaleRecipeWindow = new ScaleRecipeWindow(this);
+            scaleRecipeWindow.Show();
 
         }
 
