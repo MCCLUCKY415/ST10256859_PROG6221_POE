@@ -12,6 +12,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ST10256859_PROG6221_POE_PART1.Classes
 {
@@ -63,7 +64,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         {
             var random = new Random();
             var recipes = new List<Recipe>();
-            var foodGroups = new[] { "Vegetables", "Fruits", "Grains", "Protein", "Dairy" };
+            var foodGroups = new[] { "Vegetables", "Fruits", "Grains", "Proteins", "Dairy" };
             var unitOfMeasures = new[] { "grams", "cups", "tablespoons", "teaspoons", "pieces" };
             var ingredientNames = new[] { "Sugar", "Salt", "Flour", "Butter", "Milk", "Eggs", "Tomato", "Lettuce", "Chicken", "Beef" };
 
@@ -93,6 +94,46 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             }
 
             return recipes;
+        }
+
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+        // Method to get the details of the recipe.
+        public string GetRecipeDetails()
+        {
+            var details = new StringBuilder();
+
+            // Recipe header
+            details.AppendLine("-----------------------------------------------------");
+            details.AppendLine($"Recipe Name: {RecipeName}");
+            details.AppendLine("-----------------------------------------------------");
+
+            // Ingredients header
+            details.AppendLine("Ingredients:");
+            details.AppendLine("-------------");
+            foreach (var ingredient in Ingredients)
+            {
+                details.AppendLine($"- {ingredient.IngQuantity} {ingredient.IngUnitOfMeasure} of {ingredient.IngName} ({ingredient.Calories} calories)");
+            }
+            details.AppendLine("-----------------------------------------------------");
+
+            // Steps header
+            details.AppendLine("Steps:");
+            details.AppendLine("-------");
+            int stepNumber = 1;
+            foreach (var step in Steps)
+            {
+                details.AppendLine($"Step {stepNumber}: {step.StepDescription}");
+                stepNumber++;
+            }
+
+            // Recipe statistics
+            details.AppendLine("-----------------------------------------------------");
+            details.AppendLine($"Total Number of Ingredients: {Ingredients.Count}");
+            details.AppendLine($"Total Number of Steps: {Steps.Count}");
+            details.AppendLine($"Total Number of Calories: {CalculateTotalCalories()}");
+            details.AppendLine("-----------------------------------------------------\n\n\n\n");
+
+            return details.ToString();
         }
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }

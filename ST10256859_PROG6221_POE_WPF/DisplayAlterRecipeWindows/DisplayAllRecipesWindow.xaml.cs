@@ -30,6 +30,18 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
             List<Recipe> recipes = displayAlterWin.GetRecipes();
             recipeDetailsPanel.Children.Clear();
 
+            if(recipes.Count == 0) 
+            {
+                TextBlock noRecipesBlock = new TextBlock
+                {
+                    Text = "No recipes to display.",
+                    FontSize = 16,
+                    Foreground = Brushes.White,
+                    Margin = new Thickness(0, 10, 0, 10)
+                };
+                recipeDetailsPanel.Children.Add(noRecipesBlock);
+                return;
+            }
             foreach (var recipe in recipes)
             {
                 TextBlock recipeSummaryBlock = new TextBlock
@@ -49,7 +61,6 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
             base.OnClosed(e);
             this.displayAlterWin.Show();
         }
-
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> }
     }
 }

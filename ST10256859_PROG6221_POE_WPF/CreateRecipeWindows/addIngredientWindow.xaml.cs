@@ -51,7 +51,7 @@ namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
             double newIngredientQuantity;
             if (!double.TryParse(quantityTextBox.Text,out newIngredientQuantity))
             {
-               MessageBox.Show("Please enter a valid quantity.");
+               MessageBox.Show("Please enter a valid number of measurement.");
                 return;
             }
 
@@ -70,7 +70,6 @@ namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
             }
             
             createRecipeWin.newIngredients.Add(new Ingredient(newIngredientName, newIngredientUnitOfMeasurement, newIngredientQuantity, newIngredientNumberOfCalories, newIngredientFoodGroup));
-        
             this.Close();
         }
 
@@ -80,7 +79,6 @@ namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
             base.OnClosed(e);
             this.createRecipeWin.Show();
         }
-
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }
 }

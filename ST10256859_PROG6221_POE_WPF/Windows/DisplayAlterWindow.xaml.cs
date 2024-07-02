@@ -72,6 +72,47 @@ namespace ST10256859_PROG6221_POE_WPF.Windows
         {
             return mainWin.recipes;
         }
+
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+        public List<Recipe> SearchForRecipes(string ingredientName, string foodGroup, string maxCalories)
+        {
+            List<Recipe> recipes = mainWin.recipes;
+            List<Recipe> searchResults = new List<Recipe>();
+
+            int maxCaloriesValue = 0;
+            bool maxCaloriesProvided = int.TryParse(maxCalories, out maxCaloriesValue);
+
+            foreach (Recipe recipe in recipes)
+            {
+                bool matchesIngredient = false;
+                bool matchesFoodGroup = false;
+                bool matchesMaxCalories = !maxCaloriesProvided || recipe.CalculateTotalCalories() <= maxCaloriesValue;
+
+                foreach (Ingredient ingredient in recipe.Ingredients)
+                {
+                    if (!string.IsNullOrEmpty(ingredientName) && ingredient.IngName.Equals(ingredientName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        matchesIngredient = true;
+                    }
+
+                    if (!string.IsNullOrEmpty(foodGroup) && ingredient.FoodGroup.Equals(foodGroup, StringComparison.OrdinalIgnoreCase))
+                    {
+                        matchesFoodGroup = true;
+                    }
+                }
+
+                // Check if the recipe matches any of the provided criteria
+                if ((matchesIngredient || string.IsNullOrEmpty(ingredientName)) &&
+                    (matchesFoodGroup || string.IsNullOrEmpty(foodGroup)) &&
+                    matchesMaxCalories)
+                {
+                    searchResults.Add(recipe);
+                }
+            }
+
+            return searchResults;
+        }
+
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }
 }

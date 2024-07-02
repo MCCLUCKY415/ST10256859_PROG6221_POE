@@ -76,7 +76,6 @@ namespace ST10256859_PROG6221_POE_WPF.Windows
             }
 
             mainWin.recipes.Add(new Recipe(newRecipeName, newIngredients, newSteps));
-
             this.Close();
         }
 
