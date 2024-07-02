@@ -72,6 +72,7 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
             foreach (var ingredient in recipeToScale.Ingredients)
             {
                 ingredient.IngQuantity *= scaleFactor;
+                ingredient.Calories *= scaleFactor;
             }
 
             MessageBox.Show($"The ingredients of the recipe '{recipeName}' have been {scaleDescription}.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -80,17 +81,14 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
             recipeDetailsPanel.Children.Clear();
 
             // Create a TextBox to display the scaled recipe details
-            TextBox recipeDetailsTextBox = new TextBox
+            TextBlock recipeDetailsTextBox = new TextBlock
             {
                 Text = recipeToScale.GetRecipeDetails(),
                 FontSize = 16,
                 Foreground = Brushes.White,
                 Background = Brushes.Transparent,
-                BorderThickness = new Thickness(0),
                 Margin = new Thickness(0, 10, 0, 10),
-                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
                 TextWrapping = TextWrapping.Wrap,
-                IsReadOnly = true
             };
 
             // Add the TextBox to the recipeDetailsPanel
@@ -119,6 +117,7 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
             foreach (var ingredient in recipeToScale.Ingredients)
             {
                 ingredient.IngQuantity = ingredient.OriginalIngQuantity;
+                ingredient.Calories = ingredient.OriginalCalories;
             }
 
             MessageBox.Show($"The ingredients of the recipe '{recipeName}' have been reset to their original quantities.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -127,17 +126,14 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
             recipeDetailsPanel.Children.Clear();
 
             // Create a TextBox to display the reset recipe details
-            TextBox recipeDetailsTextBox = new TextBox
+            TextBlock recipeDetailsTextBox = new TextBlock
             {
                 Text = recipeToScale.GetRecipeDetails(),
                 FontSize = 16,
                 Foreground = Brushes.White,
                 Background = Brushes.Transparent,
-                BorderThickness = new Thickness(0),
                 Margin = new Thickness(0, 10, 0, 10),
-                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
                 TextWrapping = TextWrapping.Wrap,
-                IsReadOnly = true
             };
 
             // Add the TextBox to the recipeDetailsPanel
