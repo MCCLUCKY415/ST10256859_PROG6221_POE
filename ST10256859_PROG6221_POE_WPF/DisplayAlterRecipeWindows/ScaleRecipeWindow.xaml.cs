@@ -35,102 +35,24 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void halfScaleButton_Click(object sender, RoutedEventArgs e)
         {
-            List<Recipe> recipes = displayAlterWin.GetRecipes();
-            string recipeName = scaleRecipeTextBox.Text.Trim();
-            if (string.IsNullOrEmpty(recipeName))
-            {
-                MessageBox.Show("Please enter a recipe name.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            Recipe recipeToScale = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeName, StringComparison.OrdinalIgnoreCase));
-            if (recipeToScale == null)
-            {
-                MessageBox.Show("Recipe not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            // Scale the ingredients by half
-            foreach (var ingredient in recipeToScale.Ingredients)
-            {
-                ingredient.IngQuantity /= 2;
-            }
-
-            MessageBox.Show($"The ingredients of the recipe '{recipeName}' have been scaled to half.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
-            // Clear existing children
-            recipeDetailsPanel.Children.Clear();
-
-            // Create a TextBox to display the scaled recipe details
-            TextBox recipeDetailsTextBox = new TextBox
-            {
-                Text = recipeToScale.GetRecipeDetails(),
-                FontSize = 16,
-                Foreground = Brushes.White,
-                Background = Brushes.Transparent,
-                BorderThickness = new Thickness(0),
-                Margin = new Thickness(0, 10, 0, 10),
-                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-                TextWrapping = TextWrapping.Wrap,
-                IsReadOnly = true
-            };
-
-            // Add the TextBox to the recipeDetailsPanel
-            recipeDetailsPanel.Children.Add(recipeDetailsTextBox);
+            ScaleRecipe(0.5, "scaled to half");
         }
-
-
 
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void doubleScaleButton_Click(object sender, RoutedEventArgs e)
         {
-            List<Recipe> recipes = displayAlterWin.GetRecipes();
-            string recipeName = scaleRecipeTextBox.Text.Trim();
-            if (string.IsNullOrEmpty(recipeName))
-            {
-                MessageBox.Show("Please enter a recipe name.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            Recipe recipeToScale = recipes.FirstOrDefault(r => r.RecipeName.Equals(recipeName, StringComparison.OrdinalIgnoreCase));
-            if (recipeToScale == null)
-            {
-                MessageBox.Show("Recipe not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            // Scale the ingredients by half
-            foreach (var ingredient in recipeToScale.Ingredients)
-            {
-                ingredient.IngQuantity *= 2;
-            }
-
-            MessageBox.Show($"The ingredients of the recipe '{recipeName}' have been scaled to half.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
-            // Clear existing children
-            recipeDetailsPanel.Children.Clear();
-
-            // Create a TextBox to display the scaled recipe details
-            TextBox recipeDetailsTextBox = new TextBox
-            {
-                Text = recipeToScale.GetRecipeDetails(),
-                FontSize = 16,
-                Foreground = Brushes.White,
-                Background = Brushes.Transparent,
-                BorderThickness = new Thickness(0),
-                Margin = new Thickness(0, 10, 0, 10),
-                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-                TextWrapping = TextWrapping.Wrap,
-                IsReadOnly = true
-            };
-
-            // Add the TextBox to the recipeDetailsPanel
-            recipeDetailsPanel.Children.Add(recipeDetailsTextBox);
+            ScaleRecipe(2, "doubled");
         }
 
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void tripleScaleButton_Click(object sender, RoutedEventArgs e)
         {
+            ScaleRecipe(3, "tripled");
+        }
+
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+        private void ScaleRecipe(double scaleFactor, string scaleDescription)
+        {
             List<Recipe> recipes = displayAlterWin.GetRecipes();
             string recipeName = scaleRecipeTextBox.Text.Trim();
             if (string.IsNullOrEmpty(recipeName))
@@ -146,13 +68,13 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
                 return;
             }
 
-            // Scale the ingredients by half
+            // Scale the ingredients
             foreach (var ingredient in recipeToScale.Ingredients)
             {
-                ingredient.IngQuantity *= 3;
+                ingredient.IngQuantity *= scaleFactor;
             }
 
-            MessageBox.Show($"The ingredients of the recipe '{recipeName}' have been scaled to half.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show($"The ingredients of the recipe '{recipeName}' have been {scaleDescription}.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
             // Clear existing children
             recipeDetailsPanel.Children.Clear();
@@ -196,7 +118,7 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
             // Reset the ingredients to their original quantities
             foreach (var ingredient in recipeToScale.Ingredients)
             {
-                ingredient.IngQuantity = ingredient.OriginalQuantity;
+                ingredient.IngQuantity = ingredient.OriginalIngQuantity;
             }
 
             MessageBox.Show($"The ingredients of the recipe '{recipeName}' have been reset to their original quantities.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);

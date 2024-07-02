@@ -41,118 +41,16 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             OriginalCalories = calories;
             FoodGroup = foodGroup;
         }
+
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-
-        //// Method to get user input for ingredients
-        //public List<Ingredient> GetIngredients()
-        //{
-        //    bool inputValid = false;  // Boolean to check if the user's input is valid
-        //    List<Ingredient> ing = new List<Ingredient>();  // List to store ingredients
-
-        //    while (!inputValid)
-        //    {
-        //        try
-        //        {
-        //            // Prompt the user to enter the total number of ingredients
-        //            Console.Write("\n\nPlease enter the total number of ingredients that will be used: ");
-        //            int NumIngredients = Convert.ToInt32(Console.ReadLine());
-
-        //            // Validate the number of ingredients
-        //            if (NumIngredients <= 0 || NumIngredients > 1000000000)
-        //            {
-        //                Console.ForegroundColor = ConsoleColor.Red;
-        //                Console.WriteLine("\n\n\nPlease enter a valid number!\n");
-        //                Console.ResetColor();
-        //                continue;
-        //            }
-
-        //            // Loop through the array and prompt the user to enter the details of each ingredient
-        //            for (int i = 0; i < NumIngredients; i++)
-        //            {
-        //                string name = null;
-        //                double quantity = 0;
-        //                double calories = 0;
-        //                string measurement = null;
-        //                string foodGroup = null;
-
-        //                // Loop until all fields are filled correctly
-        //                while (name == null || quantity == 0 || calories == 0 || measurement == null || foodGroup == null)
-        //                {
-        //                    try
-        //                    {
-        //                        if (name == null)
-        //                        {
-        //                            Console.Write("\nPlease enter the name of ingredient " + (i + 1) + ": ");
-        //                            name = Console.ReadLine();
-        //                        }
-
-        //                        if (measurement == null)
-        //                        {
-        //                            Console.Write("\nPlease enter the unit of measurement that will be used for ingredient " + (i + 1) + " (tablespoons, teaspoons, litres, etc.): ");
-        //                            measurement = Console.ReadLine();
-        //                        }
-
-        //                        if (quantity == 0)
-        //                        {
-        //                            Console.Write("\nPlease enter the quantity of measurements for ingredient " + (i + 1) + ": ");
-        //                            quantity = Convert.ToDouble(Console.ReadLine());
-        //                        }
-
-        //                        if (calories == 0)
-        //                        {
-        //                            while (calories == 0)
-        //                            {
-        //                                Console.Write("\nPlease enter the number of calories for ingredient " + (i + 1) + ": ");
-        //                                calories = Convert.ToDouble(Console.ReadLine());
-        //                            }
-        //                        }
-
-        //                        if (foodGroup == null)
-        //                        {
-        //                            Console.Write("\nPlease enter the food group for ingredient " + (i + 1) + " (fruit, vegetable, grain, protein, dairy, fat): ");
-        //                            foodGroup = Console.ReadLine();
-        //                        }
-        //                    }
-        //                    catch (FormatException)
-        //                    {
-        //                        Console.ForegroundColor = ConsoleColor.Red;
-        //                        Console.WriteLine("\n\n\nPlease enter a valid number!\n");
-        //                        Console.ResetColor();
-        //                    }
-        //                }
-
-        //                // Create a new Ingredient object with the entered details and add it to the list
-        //                Ingredient ingredient = new Ingredients
-        //                {
-        //                    IngName = name,
-        //                    IngQuantity = quantity,
-        //                    IngUnitOfMeasure = measurement,
-        //                    OriginalIngQuantity = quantity,
-        //                    OriginalIngUnitOfMeasure = measurement,
-        //                    Calories = calories,
-        //                    OriginalCalories = calories,
-        //                    FoodGroup = foodGroup
-        //                };
-        //                ing.Add(ingredient);
-        //            }
-
-        //            // Display a success message and return the list of Ingredient objects
-        //            Console.ForegroundColor = ConsoleColor.Green;
-        //            Console.WriteLine("\n\nIngredients successfully saved!\n\n");
-        //            Console.ResetColor();
-        //            return ing;
-        //        }
-        //        catch (FormatException)
-        //        {
-        //            Console.ForegroundColor = ConsoleColor.Red;
-        //            Console.WriteLine("\n\n\nPlease enter a number!\n");
-        //            Console.ResetColor();
-        //        }
-        //    }
-
-        //    // If the user didn't enter a valid number of ingredients, return null
-        //    return null;
-        //}
+        // Method to reset the ingredient to its original values
+        public void ResetToOriginal()
+        {
+            IngQuantity = OriginalIngQuantity;
+            IngUnitOfMeasure = OriginalIngUnitOfMeasure;
+            Calories = OriginalCalories;
+        }
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }
 }
 
