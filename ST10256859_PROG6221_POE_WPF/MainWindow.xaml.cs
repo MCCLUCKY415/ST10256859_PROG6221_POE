@@ -30,6 +30,7 @@ namespace ST10256859_PROG6221_POE_WPF
             InitializeComponent();
 
             recipes = new List<Recipe>();
+            recipes = Recipe.GenerateRandomRecipes();
         }
 
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>

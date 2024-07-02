@@ -48,10 +48,51 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         // Method to get a summary of the recipe.
         public string GetRecipeSummary()
         {
-            return $"Recipe: {RecipeName}\n" +
+            return $"-----------------------------------\n" +
+                   $"Recipe Name: {RecipeName}\n" +
+                   $"-----------------------------------\n" +
                    $"Total Number of Ingredients: {Ingredients.Count}\n" +
                    $"Total Number of Steps: {Steps.Count}\n" +
-                   $"Total Number of Calories: {CalculateTotalCalories()}";
+                   $"Total Number of Calories: {CalculateTotalCalories()}\n" +
+                   $"-----------------------------------\n";
+        }
+
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+        //Method to generate 20 random recipes
+        public static List<Recipe> GenerateRandomRecipes()
+        {
+            var random = new Random();
+            var recipes = new List<Recipe>();
+            var foodGroups = new[] { "Vegetables", "Fruits", "Grains", "Protein", "Dairy" };
+            var unitOfMeasures = new[] { "grams", "cups", "tablespoons", "teaspoons", "pieces" };
+            var ingredientNames = new[] { "Sugar", "Salt", "Flour", "Butter", "Milk", "Eggs", "Tomato", "Lettuce", "Chicken", "Beef" };
+
+            for (int i = 0; i < 20; i++)
+            {
+                var recipeName = $"Recipe {i + 1}";
+                var ingredients = new List<Ingredient>();
+                var steps = new List<Step>();
+
+                for (int j = 0; j < random.Next(3, 10); j++)
+                {
+                    var ingName = ingredientNames[random.Next(ingredientNames.Length)];
+                    var ingUnit = unitOfMeasures[random.Next(unitOfMeasures.Length)];
+                    var ingQuantity = random.Next(1, 500);
+                    var calories = random.Next(50, 500);
+                    var foodGroup = foodGroups[random.Next(foodGroups.Length)];
+
+                    ingredients.Add(new Ingredient(ingName, ingUnit, ingQuantity, calories, foodGroup));
+                }
+
+                for (int k = 0; k < random.Next(1, 5); k++)
+                {
+                    steps.Add(new Step($"Step description {k + 1}"));
+                }
+
+                recipes.Add(new Recipe(recipeName, ingredients, steps));
+            }
+
+            return recipes;
         }
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }
