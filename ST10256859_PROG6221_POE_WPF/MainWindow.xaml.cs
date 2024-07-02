@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ST10256859_PROG6221_POE_PART1.Classes;
 using ST10256859_PROG6221_POE_WPF.Windows;
 
 namespace ST10256859_PROG6221_POE_WPF
@@ -21,26 +22,35 @@ namespace ST10256859_PROG6221_POE_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<Recipe> recipes { get; set; }
+
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         public MainWindow()
         {
             InitializeComponent();
+
+            recipes = new List<Recipe>();
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void CreateRecipe_Click(object sender, RoutedEventArgs e)
         {
             var createRecipeWindow = new CreateRecipeWindow(this);
             createRecipeWindow.Show();
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void DisplayAlterRecipe_Click(object sender, RoutedEventArgs e)
         {
             var displayAlterWindow = new DisplayAlterWindow(this); 
             displayAlterWindow.Show();
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }
 }

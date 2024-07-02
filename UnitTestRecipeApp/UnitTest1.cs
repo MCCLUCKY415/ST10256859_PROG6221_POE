@@ -17,6 +17,7 @@ namespace UnitTestRecipeApp
     [TestClass]
     public class UnitTest1
     {
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         // Test method to check the total calorie calculation for a recipe.
         [TestMethod]
         public void TestTotalCalorieCalc()
@@ -24,9 +25,9 @@ namespace UnitTestRecipeApp
             // Arrange
 
             // Create ingredients for the recipe
-            var ingredients = new List<Ingredients>
+            var ingredients = new List<Ingredient>
             {
-                new Ingredients
+                new Ingredient
                 {
                     IngName = "Ingredient 1",
                     IngQuantity = 100,
@@ -37,7 +38,7 @@ namespace UnitTestRecipeApp
                     OriginalCalories = 50,
                     FoodGroup = "Vegetables"
                 },
-                new Ingredients
+                new Ingredient
                 {
                     IngName = "Ingredient 2",
                     IngQuantity = 2,
@@ -51,7 +52,7 @@ namespace UnitTestRecipeApp
             };
 
             // Create a recipe with the ingredients
-            var recipe = new Recipe("Test Recipe", ingredients, new List<Steps>());
+            var recipe = new Recipe("Test Recipe", ingredients, new List<Step>());
 
             // Expected total calories calculation
             double expectedTotalCalories = 50 + 30;
@@ -66,6 +67,7 @@ namespace UnitTestRecipeApp
             // Compare expected and actual total calories
             Assert.AreEqual(expectedTotalCalories, actualTotalCalories);
         }
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }
 }
 

@@ -17,16 +17,18 @@ namespace ST10256859_PROG6221_POE_PART1
     // This is the Program class in the ST10256859_PROG6221_POE_PART1 namespace.
     internal class Program
     {
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         // This is the Main method, which is the entry point of the program.
         private static void Main(string[] args)
         {
-            // Create a new instance of the RecipeProcesses class.
-            RecipeProcesses recipeProcesses = new RecipeProcesses();
+            //// Create a new instance of the RecipeProcesses class.
+            //RecipeProcesses recipeProcesses = new RecipeProcesses();
 
-            // Call the MainMenu method of the RecipeProcesses object.
-            // This method displays the main menu and handles the user's choices.
-            recipeProcesses.MainMenu();
+            //// Call the MainMenu method of the RecipeProcesses object.
+            //// This method displays the main menu and handles the user's choices.
+            //recipeProcesses.MainMenu();
         }
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }
 }
 

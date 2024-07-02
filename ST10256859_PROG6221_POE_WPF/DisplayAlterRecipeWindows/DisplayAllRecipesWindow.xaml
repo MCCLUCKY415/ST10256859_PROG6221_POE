@@ -161,15 +161,16 @@
                 CornerRadius="10"
                 Margin="510,10,0,28"
                 Padding="10"
+                Height="590"
+                Width="555"
                 HorizontalAlignment="Left"
-                Width="555">
-            <TextBlock TextWrapping="Wrap"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
-                       Foreground="White"
-                       FontSize="18">
-                <Run Text="Recipes." />
-            </TextBlock>
+                VerticalAlignment="Top">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="recipeDetailsPanel"
+                            Margin="10">
+                    
+                </StackPanel>
+            </ScrollViewer>
         </Border>
     </Grid>
 </Window>

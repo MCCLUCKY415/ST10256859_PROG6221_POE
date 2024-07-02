@@ -1,17 +1,10 @@
-﻿using ST10256859_PROG6221_POE_WPF.Windows;
+﻿using ST10256859_PROG6221_POE_PART1.Classes;
+using ST10256859_PROG6221_POE_WPF.Windows;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
 {
@@ -22,6 +15,7 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
     {
         private DisplayAlterWindow displayAlterWin;
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         public DisplayAllRecipesWindow(DisplayAlterWindow daw)
         {
             InitializeComponent();
@@ -30,15 +24,32 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
             this.displayAlterWin.Hide();
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void DisplayAllRecipesButton_Click(object sender, RoutedEventArgs e)
         {
+            List<Recipe> recipes = displayAlterWin.GetRecipes();
+            recipeDetailsPanel.Children.Clear();
 
+            foreach (var recipe in recipes)
+            {
+                TextBlock recipeSummaryBlock = new TextBlock
+                {
+                    Text = recipe.GetRecipeSummary(),
+                    FontSize = 16,
+                    Foreground = Brushes.White,
+                    Margin = new Thickness(0, 10, 0, 10)
+                };
+                recipeDetailsPanel.Children.Add(recipeSummaryBlock);
+            }
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
             this.displayAlterWin.Show();
         }
+
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ST10256859_PROG6221_POE_WPF.Windows;
+﻿using ST10256859_PROG6221_POE_PART1.Classes;
+using ST10256859_PROG6221_POE_WPF.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
     {
         private CreateRecipeWindow createRecipeWin;
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         public AddIngredientWindow(CreateRecipeWindow crw)
         {
             InitializeComponent();
@@ -29,25 +31,56 @@ namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
             this.createRecipeWin.Hide();
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void AddIngredientButton_Click(object sender, RoutedEventArgs e)
         {
             string newIngredientName = ingredientNameTextBox.Text;
-            string newIngredientUnitOfMeasurement = unitOfMeasurementTextBox.Text;
-            string newIngredientQuantity = quantityTextBox.Text;
-            string newIngredientNumberOfCalories = caloriesTextBox.Text;
-            string newIngredientFoodGroup = foodGroupComboBox.Text;
-
-            if (string.IsNullOrEmpty(newIngredientName) || string.IsNullOrEmpty(newIngredientUnitOfMeasurement) || string.IsNullOrEmpty(newIngredientQuantity) || string.IsNullOrEmpty(newIngredientNumberOfCalories) || string.IsNullOrEmpty(newIngredientFoodGroup))
+            if (string.IsNullOrEmpty(newIngredientName))
             {
-                MessageBox.Show("Please enter all ingredient details.");
+                MessageBox.Show("Please enter an ingredient name.");
                 return;
             }
+
+            string newIngredientUnitOfMeasurement = unitOfMeasurementTextBox.Text;
+            if (string.IsNullOrEmpty(newIngredientUnitOfMeasurement))
+            {
+                MessageBox.Show("Please enter a unit of measurement.");
+                return;
+            }
+
+            double newIngredientQuantity;
+            if (!double.TryParse(quantityTextBox.Text,out newIngredientQuantity))
+            {
+               MessageBox.Show("Please enter a valid quantity.");
+                return;
+            }
+
+            double newIngredientNumberOfCalories;
+            if (!double.TryParse(caloriesTextBox.Text, out newIngredientNumberOfCalories))
+            {
+                MessageBox.Show("Please enter a valid number of calories.");
+                return;
+            }
+            
+            string newIngredientFoodGroup = foodGroupComboBox.Text;
+            if (string.IsNullOrEmpty(newIngredientFoodGroup))
+            {
+                MessageBox.Show("Please select a food group.");
+                return;
+            }
+            
+            createRecipeWin.newIngredients.Add(new Ingredient(newIngredientName, newIngredientUnitOfMeasurement, newIngredientQuantity, newIngredientNumberOfCalories, newIngredientFoodGroup));
+        
+            this.Close();
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
             this.createRecipeWin.Show();
         }
+
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }
 }

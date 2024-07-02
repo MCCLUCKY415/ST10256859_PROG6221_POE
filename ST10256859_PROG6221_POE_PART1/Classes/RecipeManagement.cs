@@ -28,7 +28,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         public void AddRecipe(string recipeName)
         {
             // Create a new Recipe object with an empty list of ingredients and steps.
-            Recipe newRecipe = new Recipe(recipeName, new List<Ingredients>(), new List<Steps>());
+            Recipe newRecipe = new Recipe(recipeName, new List<Ingredient>(), new List<Step>());
 
             // Add the new recipe to the collection.
             recipes.Add(newRecipe);

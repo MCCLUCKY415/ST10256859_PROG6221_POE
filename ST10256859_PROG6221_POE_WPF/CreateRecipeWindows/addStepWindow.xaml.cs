@@ -1,4 +1,5 @@
-﻿using ST10256859_PROG6221_POE_WPF.Windows;
+﻿using ST10256859_PROG6221_POE_PART1.Classes;
+using ST10256859_PROG6221_POE_WPF.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
     {
         private CreateRecipeWindow createRecipeWin;
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         public AddStepWindow(CreateRecipeWindow crw)
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
             this.createRecipeWin.Hide();
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void AddStepButton_Click(object sender, RoutedEventArgs e)
         {
             string newStepDescription = stepDescriptionTextBox.Text;
@@ -38,15 +41,17 @@ namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
                 MessageBox.Show("Please enter a step description.");
                 return;
             }
-            createRecipeWin.newSteps.Add(newStepDescription);
+            createRecipeWin.newSteps.Add(new Step(newStepDescription));
             stepDescriptionTextBox.Text = "";
             this.Close();
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
             this.createRecipeWin.Show();
         }
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }
 }

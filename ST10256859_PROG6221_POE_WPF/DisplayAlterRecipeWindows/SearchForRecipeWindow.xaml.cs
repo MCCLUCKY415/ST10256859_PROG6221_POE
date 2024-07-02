@@ -22,6 +22,7 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
     {
         private DisplayAlterWindow displayAlterWin;
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         public SearchForRecipeWindow(DisplayAlterWindow daw)
         {
             InitializeComponent();
@@ -30,15 +31,18 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
             this.displayAlterWin.Hide();
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void searchForRecipeButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
             this.displayAlterWin.Show();
         }
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }
 }

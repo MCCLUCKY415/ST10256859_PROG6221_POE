@@ -1,4 +1,5 @@
-﻿using ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows;
+﻿using ST10256859_PROG6221_POE_PART1.Classes;
+using ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace ST10256859_PROG6221_POE_WPF.Windows
     {
         private MainWindow mainWin;
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         public DisplayAlterWindow(MainWindow mw)
         {
             InitializeComponent();
@@ -30,18 +32,21 @@ namespace ST10256859_PROG6221_POE_WPF.Windows
             this.mainWin.Hide();
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void DisplayAllRecipesButton_Click(object sender, RoutedEventArgs e)
         {
             var displayAllRecipesWindow = new DisplayAllRecipesWindow(this);
             displayAllRecipesWindow.Show();
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void SearchForRecipeButton_Click(object sender, RoutedEventArgs e)
         {
             var searchForRecipeWindow = new SearchForRecipeWindow(this);
             searchForRecipeWindow.Show();
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void ScaleRecipeButton_Click(object sender, RoutedEventArgs e)
         {
             var scaleRecipeWindow = new ScaleRecipeWindow(this);
@@ -49,15 +54,24 @@ namespace ST10256859_PROG6221_POE_WPF.Windows
 
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void ClearAllRecipesButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
             this.mainWin.Show();
         }
+        
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+        public List<Recipe> GetRecipes()
+        {
+            return mainWin.recipes;
+        }
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }
 }
