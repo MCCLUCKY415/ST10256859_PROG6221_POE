@@ -130,7 +130,26 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             details.AppendLine("-----------------------------------------------------");
             details.AppendLine($"Total Number of Ingredients: {Ingredients.Count}");
             details.AppendLine($"Total Number of Steps: {Steps.Count}");
-            details.AppendLine($"Total Number of Calories: {CalculateTotalCalories()}");
+
+            // Calculate total calories
+            double totalCalories = CalculateTotalCalories();
+            details.AppendLine($"Total Number of Calories: {totalCalories}");
+            details.AppendLine("-----------------------------------------------------");
+
+            // Add calorie message
+            if (totalCalories < 150)
+            {
+                details.AppendLine("This recipe is low in calories, making it a great\nchoice for a light snack.");
+            }
+            else if (totalCalories >= 150 && totalCalories <= 300)
+            {
+                details.AppendLine("This recipe contains a moderate amount of\ncalories, perfect for a balanced meal.");
+            }
+            else
+            {
+                details.AppendLine("This recipe is high in calories and should be\nenjoyed in moderation.");
+            }
+
             details.AppendLine("-----------------------------------------------------\n\n\n\n");
 
             return details.ToString();

@@ -179,6 +179,7 @@
                     Height="100">
                 <StackPanel>
                     <Button Content="Clear All Recipe Data"
+                            Background="#f24147"
                             Style="{StaticResource ButtonStyle}"
                             x:Name="clearAllRecipesButton"
                             Click="ClearAllRecipesButton_Click">
