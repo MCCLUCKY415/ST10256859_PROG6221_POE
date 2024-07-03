@@ -70,50 +70,98 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
                     // Get recipe details as a single string
                     string recipeDetails = recipe.GetRecipeDetails();
                     // Split the details into lines
-                    var lines = recipeDetails.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+                    var lines = recipeDetails.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-                    // Create a TextBlock for the entire recipe details
-                    TextBlock recipeSummaryBlock = new TextBlock
+                    // Create a StackPanel to hold recipe details
+                    StackPanel recipePanel = new StackPanel
                     {
-                        FontSize = 16,
-                        Foreground = Brushes.White,
-                        Margin = new Thickness(0, 10, 0, 10),
-                        TextWrapping = TextWrapping.Wrap
+                        Margin = new Thickness(0, 10, 0, 10)
                     };
+
+                    // Initialize checkbox and step text
+                    CheckBox currentCheckBox = null;
 
                     foreach (var line in lines)
                     {
-                        // Create a Run for each line to support individual coloring
-                        Run lineRun = new Run(line + "\n");
-
-                        // Check if the line contains the total calories
-                        if (line.Contains("Total Number of Calories:"))
+                        // Check if the line contains "Step X: "
+                        if (line.StartsWith("Step "))
                         {
-                            // Extract the total calories value
-                            var parts = line.Split(':');
-                            if (parts.Length == 2 && double.TryParse(parts[1].Trim(), out double totalCalories))
+                            // Create a CheckBox for the step
+                            currentCheckBox = new CheckBox
                             {
-                                if (totalCalories < 150)
-                                {
-                                    lineRun.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6cff9b"));
-                                }
-                                else if (totalCalories >= 150 && totalCalories <= 300)
-                                {
-                                    lineRun.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ebfa84"));
-                                }
-                                else
-                                {
-                                    lineRun.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f24147"));
-                                }
-                            }
-                        }
+                                Content = line,
+                                FontSize = 16,
+                                Foreground = Brushes.White,
+                                Margin = new Thickness(10, 0, 0, 0)
+                            };
 
-                        // Add the Run to the TextBlock's Inlines collection
-                        recipeSummaryBlock.Inlines.Add(lineRun);
+                            // Add CheckBox to recipe panel
+                            recipePanel.Children.Add(currentCheckBox);
+                        }
+                        else if (currentCheckBox != null)
+                        {
+                            // Add step description as TextBlock
+                            TextBlock stepTextBlock = new TextBlock
+                            {
+                                Text = line,
+                                FontSize = 16,
+                                Foreground = GetLineForeground(line), // Apply colored text based on conditions
+                                Margin = new Thickness(20, 0, 0, 0) // Adjust margin for indentation
+                            };
+
+                            // Add step description TextBlock to recipe panel
+                            recipePanel.Children.Add(stepTextBlock);
+
+                            // Reset currentCheckBox to null after adding step description
+                            currentCheckBox = null;
+                        }
+                        else
+                        {
+                            // Create a TextBlock for other lines (non-step lines)
+                            TextBlock lineTextBlock = new TextBlock
+                            {
+                                Text = line,
+                                FontSize = 16,
+                                Foreground = GetLineForeground(line), // Apply colored text based on conditions
+                                Margin = new Thickness(0, 0, 0, 5) // Adjust margin for non-step lines
+                            };
+
+                            // Add non-step TextBlock to recipe panel
+                            recipePanel.Children.Add(lineTextBlock);
+                        }
                     }
 
-                    // Add the TextBlock to the panel
-                    recipeDetailsPanel.Children.Add(recipeSummaryBlock);
+                    // Add the recipe panel to the main panel
+                    recipeDetailsPanel.Children.Add(recipePanel);
+                }
+
+                // Method to determine foreground color based on line content
+                SolidColorBrush GetLineForeground(string line)
+                {
+                    SolidColorBrush brush = Brushes.White; // Default color
+
+                    // Check if the line contains the total calories
+                    if (line.Contains("Total Number of Calories:"))
+                    {
+                        // Extract the total calories value
+                        var parts = line.Split(':');
+                        if (parts.Length == 2 && double.TryParse(parts[1].Trim(), out double totalCalories))
+                        {
+                            if (totalCalories < 150)
+                            {
+                                brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6cff9b"));
+                            }
+                            else if (totalCalories >= 150 && totalCalories <= 300)
+                            {
+                                brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ebfa84"));
+                            }
+                            else
+                            {
+                                brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f24147"));
+                            }
+                        }
+                    }
+                    return brush;
                 }
             }
         }
