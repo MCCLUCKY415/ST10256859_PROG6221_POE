@@ -61,6 +61,10 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
                     recipeDetailsPanel.Children.Add(noRecipesBlock);
                     return;
                 }
+
+                // Sort search results alphabetically by RecipeName
+                searchResults = searchResults.OrderBy(r => r.RecipeName).ToList();
+
                 foreach (var recipe in searchResults)
                 {
                     TextBlock recipeSummaryBlock = new TextBlock

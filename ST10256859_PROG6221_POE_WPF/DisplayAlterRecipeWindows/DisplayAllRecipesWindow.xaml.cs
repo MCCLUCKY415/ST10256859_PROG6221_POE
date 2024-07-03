@@ -2,6 +2,7 @@
 using ST10256859_PROG6221_POE_WPF.Windows;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -42,6 +43,10 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
                 recipeDetailsPanel.Children.Add(noRecipesBlock);
                 return;
             }
+
+            // Sort recipes alphabetically by RecipeName
+            recipes = recipes.OrderBy(r => r.RecipeName).ToList();
+
             foreach (var recipe in recipes)
             {
                 TextBlock recipeSummaryBlock = new TextBlock
