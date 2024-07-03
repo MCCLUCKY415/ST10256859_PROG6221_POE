@@ -43,11 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AlteringRecipeProcesses.cs" />
     <Compile Include="Classes\Ingredient.cs" />
     <Compile Include="Classes\Recipe.cs" />
-    <Compile Include="Classes\RecipeManagement.cs" />
-    <Compile Include="Classes\RecipeProcesses.cs" />
     <Compile Include="Classes\Step.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

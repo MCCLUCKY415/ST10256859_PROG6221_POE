@@ -24,60 +24,6 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         {
             StepDescription = stepDescription;
         }
-
-
-        //public int NumSteps { get; set; } = 0;  // The total number of steps. This is used for creating an array of Steps objects.
-
-        //// Method to get user input for steps
-        //public List<Step> GetSteps()
-        //{
-        //    bool inputValid = false;  // Boolean to check if the user's input is valid
-        //    List<Step> stp = new List<Step>();  // List to store steps
-
-        //    while (!inputValid)
-        //    {
-        //        try
-        //        {
-        //            // Prompt the user to enter the total number of steps
-        //            Console.Write("\nPlease enter the total number of steps: ");
-        //            NumSteps = Convert.ToInt32(Console.ReadLine());
-
-        //            // Validate the number of steps
-        //            if (NumSteps <= 0 || NumSteps > 1000000000)
-        //            {
-        //                Console.ForegroundColor = ConsoleColor.Red;
-        //                Console.WriteLine("\n\n\nPlease enter a valid number!\n\n");
-        //                Console.ResetColor();
-        //                continue;
-        //            }
-
-        //            // Loop through the array and prompt the user to enter the description of each step
-        //            for (int i = 0; i < NumSteps; i++)
-        //            {
-        //                Console.Write("\nPlease enter the description for step " + (i + 1) + ": ");
-        //                string description = Console.ReadLine();
-
-        //                // Create a new Steps object with the entered description and add it to the list
-        //                stp.Add(new Step { StepDescription = description });
-        //            }
-
-        //            // Display a success message and return the list of Steps objects
-        //            Console.ForegroundColor = ConsoleColor.Green;
-        //            Console.WriteLine("\n\n\nSteps successfully saved!\n\n");
-        //            Console.ResetColor();
-        //            return stp;
-        //        }
-        //        catch (FormatException)
-        //        {
-        //            Console.ForegroundColor = ConsoleColor.Red;
-        //            Console.WriteLine("\n\n\nPlease enter a number!\n");
-        //            Console.ResetColor();
-        //        }
-        //    }
-
-        //    // If the user didn't enter a valid number of steps, return null
-        //    return null;
-        //}
     }
 }
 

@@ -46,19 +46,6 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         }
 
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-        // Method to get a summary of the recipe.
-        public string GetRecipeSummary()
-        {
-            return $"-----------------------------------\n" +
-                   $"Recipe Name: {RecipeName}\n" +
-                   $"-----------------------------------\n" +
-                   $"Total Number of Ingredients: {Ingredients.Count}\n" +
-                   $"Total Number of Steps: {Steps.Count}\n" +
-                   $"Total Number of Calories: {CalculateTotalCalories()}\n" +
-                   $"-----------------------------------\n";
-        }
-
-        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         //Method to generate 20 random recipes
         public static List<Recipe> GenerateRandomRecipes()
         {
@@ -151,6 +138,11 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             }
 
             details.AppendLine("-----------------------------------------------------\n\n\n\n");
+            details.AppendLine("                                                     \n");
+            details.AppendLine("                                                     \n");
+            details.AppendLine("                                                     \n");
+            details.AppendLine("                                                     \n");
+            details.AppendLine("                                                     \n");
 
             return details.ToString();
         }
