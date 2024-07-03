@@ -1,4 +1,13 @@
-﻿using ST10256859_PROG6221_POE_PART1.Classes;
+﻿// Dhiren Ruthenavelu
+// ST10256859
+// Group 2
+
+// References:
+// - https://youtube.com/playlist?list=PLih2KERbY1HHOOJ2C6FOrVXIwg4AZ-hk1&si=FOktN0cM5CWF7X4z
+// - GitHub Copilot for assisting with the structure of the code and helping me find and fix errors.
+// - ChatGPT for assisting me with finding and fixing errors in the code.
+
+using ST10256859_PROG6221_POE_PART1.Classes;
 using ST10256859_PROG6221_POE_WPF.Windows;
 using System;
 using System.Collections.Generic;
@@ -15,25 +24,28 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
     /// </summary>
     public partial class DisplayAllRecipesWindow : Window
     {
-        private DisplayAlterWindow displayAlterWin;
+        private DisplayAlterWindow displayAlterWin; // Reference to the DisplayAlterWindow instance
 
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+        // Constructor for DisplayAllRecipesWindow
         public DisplayAllRecipesWindow(DisplayAlterWindow daw)
         {
-            InitializeComponent();
+            InitializeComponent(); // Initialize the components defined in the XAML
 
-            this.displayAlterWin = daw;
-            this.displayAlterWin.Hide();
+            this.displayAlterWin = daw; // Store the reference to the DisplayAlterWindow instance
+            this.displayAlterWin.Hide(); // Hide the DisplayAlterWindow while this window is open
         }
 
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+        // Event handler for the "Display All Recipes" button click
         private void DisplayAllRecipesButton_Click(object sender, RoutedEventArgs e)
         {
-            List<Recipe> recipes = displayAlterWin.GetRecipes();
-            recipeDetailsPanel.Children.Clear();
+            List<Recipe> recipes = displayAlterWin.GetRecipes(); // Get the list of recipes from DisplayAlterWindow
+            recipeDetailsPanel.Children.Clear(); // Clear existing children in the recipe details panel
 
             if (recipes.Count == 0)
             {
+                // Display a message if there are no recipes
                 TextBlock noRecipesBlock = new TextBlock
                 {
                     Text = "No recipes to display.",
@@ -88,8 +100,8 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
                         {
                             Text = line,
                             FontSize = 16,
-                            Foreground = GetLineForeground(line), 
-                            Margin = new Thickness(20, 0, 0, 0) 
+                            Foreground = GetLineForeground(line), // Get the appropriate foreground color based on line content
+                            Margin = new Thickness(20, 0, 0, 0) // Indent the step description
                         };
 
                         // Add step description TextBlock to recipe panel
@@ -105,8 +117,8 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
                         {
                             Text = line,
                             FontSize = 16,
-                            Foreground = GetLineForeground(line), 
-                            Margin = new Thickness(0, 0, 0, 5) 
+                            Foreground = GetLineForeground(line), // Get the appropriate foreground color based on line content
+                            Margin = new Thickness(0, 0, 0, 5) // Add margin for spacing between lines
                         };
 
                         // Add non-step TextBlock to recipe panel
@@ -130,17 +142,18 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
                     var parts = line.Split(':');
                     if (parts.Length == 2 && double.TryParse(parts[1].Trim(), out double totalCalories))
                     {
+                        // Change the foreground color based on the calorie value
                         if (totalCalories < 150)
                         {
-                            brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6cff9b"));
+                            brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6cff9b")); // Green for low calories
                         }
                         else if (totalCalories >= 150 && totalCalories <= 300)
                         {
-                            brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ebfa84"));
+                            brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ebfa84")); // Yellow for medium calories
                         }
                         else
                         {
-                            brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f24147"));
+                            brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f24147")); // Red for high calories
                         }
                     }
                 }
@@ -149,11 +162,14 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
         }
 
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+        // Override the OnClosed method to handle window closing events
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            this.displayAlterWin.Show();
+            this.displayAlterWin.Show(); // Show the DisplayAlterWindow when this window is closed
         }
-        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> }
+        //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }
 }
+
+//-----------------------------------------------------------------------------END OF FILE-----------------------------------------------------------------------------

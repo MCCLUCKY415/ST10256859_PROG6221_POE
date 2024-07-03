@@ -1,4 +1,13 @@
-﻿using ST10256859_PROG6221_POE_PART1.Classes;
+﻿// Dhiren Ruthenavelu
+// ST10256859
+// Group 2
+
+// References:
+// - https://youtube.com/playlist?list=PLih2KERbY1HHOOJ2C6FOrVXIwg4AZ-hk1&si=FOktN0cM5CWF7X4z
+// - GitHub Copilot for assisting with the structure of the code and helping me find and fix errors.
+// - ChatGPT for assisting me with finding and fixing errors in the code.
+
+using ST10256859_PROG6221_POE_PART1.Classes;
 using ST10256859_PROG6221_POE_WPF.Windows;
 using System;
 using System.Collections.Generic;
@@ -24,33 +33,39 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
         private DisplayAlterWindow displayAlterWin;
 
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+        // Constructor for SearchForRecipeWindow
         public SearchForRecipeWindow(DisplayAlterWindow daw)
         {
-            InitializeComponent();
+            InitializeComponent(); // Initialize the components defined in the XAML
 
-            this.displayAlterWin = daw;
-            this.displayAlterWin.Hide();
+            this.displayAlterWin = daw; // Store the reference to the DisplayAlterWindow instance
+            this.displayAlterWin.Hide(); // Hide the DisplayAlterWindow
         }
 
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+        // Event handler for the "Search for Recipe" button click
         private void searchForRecipeButton_Click(object sender, RoutedEventArgs e)
         {
+            // Get search criteria from the input controls
             string ingredientName = searchIngredientNameTextBox.Text;
             string foodGroup = foodGroupComboBox.Text;
             string maxCalories = searchMaxCaloriesTextBox.Text;
             List<Recipe> searchResults = new List<Recipe>();
 
+            // Clear the recipe details panel before displaying new results
             recipeDetailsPanel.Children.Clear();
             if (ingredientName == "" && foodGroup == "" && maxCalories == "")
             {
-                MessageBox.Show("Please enter at least one search criteria.");
+                MessageBox.Show("Please enter at least one search criteria."); // Show a message if no criteria is provided
             }
             else
             {
+                // Call the search function in DisplayAlterWindow to get the search results
                 searchResults = displayAlterWin.SearchForRecipes(ingredientName, foodGroup, maxCalories);
 
                 if (searchResults.Count == 0)
                 {
+                    // Display a message if no recipes are found
                     TextBlock noRecipesBlock = new TextBlock
                     {
                         Text = "No recipes found.",
@@ -145,8 +160,10 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
                     {
                         // Extract the total calories value
                         var parts = line.Split(':');
+                        // Check if the line is in the correct format
                         if (parts.Length == 2 && double.TryParse(parts[1].Trim(), out double totalCalories))
                         {
+                            // Set the foreground color based on total calories
                             if (totalCalories < 150)
                             {
                                 brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6cff9b"));
@@ -167,11 +184,14 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
         }
 
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+        // Override the OnClosed method to handle window closing events
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            this.displayAlterWin.Show();
+            this.displayAlterWin.Show(); // Show the DisplayAlterWindow when this window is closed
         }
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }
 }
+
+//-----------------------------------------------------------------------------END OF FILE-----------------------------------------------------------------------------

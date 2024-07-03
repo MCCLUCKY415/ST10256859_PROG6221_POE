@@ -18,11 +18,15 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
     // This class is responsible for handling the steps of a recipe.
     public class Step
     {
-        public string StepDescription { get; set; }  // The description of the step.
+        // Property to store the description of the step.
+        public string StepDescription { get; set; }
 
+        // Constructor to initialize the step with a description.
+        // Parameter:
+        //   stepDescription: A string containing the description of the step.
         public Step(string stepDescription)
         {
-            StepDescription = stepDescription;
+            StepDescription = stepDescription; // Assign the provided description to the StepDescription property.
         }
     }
 }

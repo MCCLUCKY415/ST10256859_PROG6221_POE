@@ -11,7 +11,6 @@
 // - Microsoft Copilot for assisting me with finding and fixing errors in the code.
 
 using System;
-using System.Collections.Generic;
 
 namespace ST10256859_PROG6221_POE_PART1.Classes
 {
@@ -35,10 +34,10 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             IngName = ingName;
             IngUnitOfMeasure = ingUnitOfMeasure;
             IngQuantity = ingQuantity;
-            OriginalIngQuantity = ingQuantity;
-            OriginalIngUnitOfMeasure = ingUnitOfMeasure;
+            OriginalIngQuantity = ingQuantity;  // Store the original quantity
+            OriginalIngUnitOfMeasure = ingUnitOfMeasure;  // Store the original unit of measure
             Calories = calories;
-            OriginalCalories = calories;
+            OriginalCalories = calories;  // Store the original calorie count
             FoodGroup = foodGroup;
         }
 
@@ -46,9 +45,9 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         // Method to reset the ingredient to its original values
         public void ResetToOriginal()
         {
-            IngQuantity = OriginalIngQuantity;
-            IngUnitOfMeasure = OriginalIngUnitOfMeasure;
-            Calories = OriginalCalories;
+            IngQuantity = OriginalIngQuantity;  // Reset quantity to original
+            IngUnitOfMeasure = OriginalIngUnitOfMeasure;  // Reset unit of measure to original
+            Calories = OriginalCalories;  // Reset calories to original
         }
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }

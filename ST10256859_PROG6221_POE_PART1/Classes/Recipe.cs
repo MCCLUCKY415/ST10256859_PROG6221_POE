@@ -47,7 +47,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
         }
 
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-        //Method to generate 20 random recipes
+        // Method to generate 20 random recipes
         public static List<Recipe> GenerateRandomRecipes()
         {
             var random = new Random();
@@ -62,6 +62,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                 var ingredients = new List<Ingredient>();
                 var steps = new List<Step>();
 
+                // Generate random ingredients
                 for (int j = 0; j < random.Next(3, 10); j++)
                 {
                     var ingName = ingredientNames[random.Next(ingredientNames.Length)];
@@ -73,6 +74,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                     ingredients.Add(new Ingredient(ingName, ingUnit, ingQuantity, calories, foodGroup));
                 }
 
+                // Generate random steps
                 for (int k = 0; k < random.Next(1, 5); k++)
                 {
                     steps.Add(new Step($"Step description {k + 1}"));
@@ -125,7 +127,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
             details.AppendLine($"Total Number of Calories: {totalCalories}");
             details.AppendLine("-----------------------------------------------------");
 
-            // Add calorie message
+            // Add calorie message based on total calories
             if (totalCalories < 150)
             {
                 details.AppendLine("This recipe is low in calories, making it a great\nchoice for a light snack.");
