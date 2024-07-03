@@ -57,19 +57,17 @@ namespace ST10256859_PROG6221_POE_WPF.Windows
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         private void ClearAllRecipesButton_Click(object sender, RoutedEventArgs e)
         {
+            List<Recipe> recipes = new List<Recipe>();
+
             // Show a MessageBox to confirm clearing recipes
             MessageBoxResult result = MessageBox.Show("Are you sure you want to clear all recipes?", "Confirm Clear", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            //if (result == MessageBoxResult.Yes)
-            //{
-            //    // Clear the list of recipes
-            //    recipes.Clear();
-
-            //    // Clear the UI panel where recipes are displayed
-            //    recipeDetailsPanel.Children.Clear();
-
-            //    // Optionally, reset any other UI elements or variables related to recipes
-            //}
+            if (result == MessageBoxResult.Yes)
+            {
+                // Clear the list of recipes
+                mainWin.recipes = recipes;
+                MessageBox.Show("All recipes have been cleared.", "Recipes Cleared", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>

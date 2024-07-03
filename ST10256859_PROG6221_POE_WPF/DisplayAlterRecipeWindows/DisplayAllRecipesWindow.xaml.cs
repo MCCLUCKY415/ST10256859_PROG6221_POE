@@ -88,8 +88,8 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
                         {
                             Text = line,
                             FontSize = 16,
-                            Foreground = GetLineForeground(line), // Apply colored text based on conditions
-                            Margin = new Thickness(20, 0, 0, 0) // Adjust margin for indentation
+                            Foreground = GetLineForeground(line), 
+                            Margin = new Thickness(20, 0, 0, 0) 
                         };
 
                         // Add step description TextBlock to recipe panel
@@ -105,8 +105,8 @@ namespace ST10256859_PROG6221_POE_WPF.DisplayAlterRecipeWindows
                         {
                             Text = line,
                             FontSize = 16,
-                            Foreground = GetLineForeground(line), // Apply colored text based on conditions
-                            Margin = new Thickness(0, 0, 0, 5) // Adjust margin for non-step lines
+                            Foreground = GetLineForeground(line), 
+                            Margin = new Thickness(0, 0, 0, 5) 
                         };
 
                         // Add non-step TextBlock to recipe panel
