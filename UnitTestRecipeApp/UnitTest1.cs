@@ -18,54 +18,53 @@ namespace UnitTestRecipeApp
     public class UnitTest1
     {
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-        // Test method to check the total calorie calculation for a recipe.
         [TestMethod]
-        public void TestTotalCalorieCalc()
+        public void CalculateTotalCalories_NoIngredients_ReturnsZero()
         {
             // Arrange
-
-            // Create ingredients for the recipe
-            var ingredients = new List<Ingredient>
-            {
-                new Ingredient
-                {
-                    IngName = "Ingredient 1",
-                    IngQuantity = 100,
-                    IngUnitOfMeasure = "grams",
-                    OriginalIngQuantity = 100,
-                    OriginalIngUnitOfMeasure = "grams",
-                    Calories = 50,
-                    OriginalCalories = 50,
-                    FoodGroup = "Vegetables"
-                },
-                new Ingredient
-                {
-                    IngName = "Ingredient 2",
-                    IngQuantity = 2,
-                    IngUnitOfMeasure = "tablespoons",
-                    OriginalIngQuantity = 2,
-                    OriginalIngUnitOfMeasure = "tablespoons",
-                    Calories = 30,
-                    OriginalCalories = 30,
-                    FoodGroup = "Protein"
-                }
-            };
-
-            // Create a recipe with the ingredients
-            var recipe = new Recipe("Test Recipe", ingredients, new List<Step>());
-
-            // Expected total calories calculation
-            double expectedTotalCalories = 50 + 30;
+            var recipe = new Recipe("Test Recipe", new List<Ingredient>(), new List<Step>());
 
             // Act
-
-            // Calculate the actual total calories of the recipe
-            double actualTotalCalories = recipe.CalculateTotalCalories();
+            double totalCalories = recipe.CalculateTotalCalories();
 
             // Assert
+            Assert.AreEqual(0, totalCalories);
+        }
 
-            // Compare expected and actual total calories
-            Assert.AreEqual(expectedTotalCalories, actualTotalCalories);
+        [TestMethod]
+        public void CalculateTotalCalories_SingleIngredient_ReturnsCorrectCalories()
+        {
+            // Arrange
+            var ingredients = new List<Ingredient>
+            {
+                new Ingredient("Ingredient 1", "", 0, 100, "")
+            };
+            var recipe = new Recipe("Test Recipe", ingredients, new List<Step>());
+
+            // Act
+            double totalCalories = recipe.CalculateTotalCalories();
+
+            // Assert
+            Assert.AreEqual(100, totalCalories);
+        }
+
+        [TestMethod]
+        public void CalculateTotalCalories_MultipleIngredients_ReturnsSumOfCalories()
+        {
+            // Arrange
+            var ingredients = new List<Ingredient>
+            {
+                new Ingredient("Ingredient 1", "", 0, 50, ""),
+                new Ingredient("Ingredient 2", "", 0, 75, ""),
+                new Ingredient("Ingredient 3", "", 0, 30, "")
+            };
+            var recipe = new Recipe("Test Recipe", ingredients, new List<Step>());
+
+            // Act
+            double totalCalories = recipe.CalculateTotalCalories();
+
+            // Assert
+            Assert.AreEqual(50 + 75 + 30, totalCalories);
         }
         //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     }
