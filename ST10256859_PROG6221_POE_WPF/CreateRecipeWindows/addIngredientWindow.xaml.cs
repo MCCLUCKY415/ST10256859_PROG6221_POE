@@ -81,7 +81,7 @@ namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
             // Check if the total calories exceed 300
             if (totalCalories > 300)
             {
-                MessageBox.Show($"Warning: The total calories for this recipe now exceed 300 (Current total: {totalCalories}).", "Calorie Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show($"Warning: The total calories for this recipe now exceed 300 (Current total: {totalCalories}).", "Calorie Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
             this.Close();
