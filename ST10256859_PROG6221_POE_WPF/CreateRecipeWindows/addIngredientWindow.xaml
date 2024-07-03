@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:ST10256859_PROG6221_POE_WPF.CreateRecipeWindows"
         mc:Ignorable="d"
         Title="addIngredientWindow"
-        Height="700"
-        Width="1100"
+        Height="730"
+        Width="1200"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize">
 
@@ -114,8 +114,8 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="17*" />
+            <ColumnDefinition Width="23*" />
         </Grid.ColumnDefinitions>
 
         <!-- Heading -->
@@ -126,12 +126,13 @@
                    FontWeight="Bold"
                    Foreground="#ed8d55"
                    HorizontalAlignment="Left"
-                   Margin="440,10,0,13"
-                   Grid.ColumnSpan="2" />
+                   Margin="500,10,0,13"
+                   Grid.ColumnSpan="2"
+                   Width="215" />
 
         <!-- Left Column: Input Boxes -->
         <StackPanel Grid.Column="0"
-                    Margin="20,0,35,20"
+                    Margin="25,10,25,20"
                     Grid.Row="1">
 
             <!-- Ingredient Name Section -->
@@ -141,7 +142,7 @@
                     Padding="10">
                 <StackPanel>
                     <Label Content="Name of the ingredient:"
-                           Width="157" />
+                           Width="136" />
                     <TextBox x:Name="ingredientNameTextBox"
                              Width="350" />
                 </StackPanel>
@@ -154,7 +155,7 @@
                     Padding="10">
                 <StackPanel>
                     <Label Content=" Unit of measurement (tablespoons, teaspoons, litres, etc.):"
-                           Width="374" />
+                           Width="320" />
                     <TextBox x:Name="unitOfMeasurementTextBox"
                              Width="350" />
                 </StackPanel>
@@ -167,7 +168,7 @@
                     Padding="10">
                 <StackPanel>
                     <Label Content="Number of measurements for the ingredient:"
-                           Width="289" />
+                           Width="247" />
                     <TextBox x:Name="quantityTextBox"
                              Width="350" />
                 </StackPanel>
@@ -179,8 +180,8 @@
                     Margin="0,10,0,10"
                     Padding="10">
                 <StackPanel>
-                    <Label Content="Number of calories in the ingredient:"
-                           Width="240" />
+                    <Label Content="Total number of calories for the ingredient:"
+                           Width="237" />
                     <TextBox x:Name="caloriesTextBox"
                              Width="350" />
                 </StackPanel>
@@ -193,7 +194,7 @@
                     Padding="10">
                 <StackPanel>
                     <Label Content="Ingredient food group:"
-                           Width="152" />
+                           Width="133" />
                     <ComboBox x:Name="foodGroupComboBox"
                               Width="350">
                         <ComboBoxItem Content="Vegetables" />
@@ -215,24 +216,51 @@
             <!-- Message Box -->
             <Border Background="#454545"
                     CornerRadius="10"
-                    Margin="0,0,0,20"
-                    Padding="10"
-                    Height="455">
+                    Margin="0,0,0,10"
+                    Padding="5"
+                    Height="519">
                 <TextBlock TextWrapping="Wrap"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            Foreground="White"
-                           FontSize="12"
-                           Height="421">
+                           FontSize="11"
+                           Height="487">
+                    <Span>
+                        -------------------------------------------------------------------------------------------------------------------------------------------------
+                    </Span>
+                    <LineBreak />
                     <Span>
                         <Bold>Instructions:</Bold> To add an ingredient, just type in its name, unit of measurement, the number of measurements, the number of calories and then select what food group the ingredient belongs to.
                     </Span>
+                    <Span>
+                        -------------------------------------------------------------------------------------------------------------------------------------------------
+                    </Span>
+                    <LineBreak />
+                    <Bold> Information on Calories and The Different Calorie Ranges:</Bold>
                     <LineBreak />
                     <LineBreak />
                     <Span>
                         <Bold>Calories:</Bold> These are units of energy that indicate how much energy food provides to the body. They are essential for fueling bodily functions and activities.
                     </Span>
                     <LineBreak />
+                    <LineBreak />
+                    <Span>
+                        <Bold>Less than 150 Calories:</Bold> This recipe is low in calories, making it a great option for a light snack or appetizer.
+                    </Span>
+                    <LineBreak />
+                    <LineBreak />
+                    <Span>
+                        <Bold>150 - 300 Calories:</Bold> This recipe has a moderate calorie content, suitable for a balanced meal that provides enough energy without being overly caloric.
+                    </Span>
+                    <LineBreak />
+                    <LineBreak />
+                    <Span>
+                        <Bold>Greater Than 300 Calories:</Bold> This recipe is high in calories and should be enjoyed sparingly. It's ideal for occasions where a more indulgent meal is appropriate.
+                    </Span>
+                    <LineBreak />
+                    <Span>
+                        -------------------------------------------------------------------------------------------------------------------------------------------------
+                    </Span>
                     <LineBreak />
                     <Bold> Information on Different Food Groups:</Bold>
                     <LineBreak />
@@ -265,6 +293,10 @@
                     <Span>
                         <Bold>Fats and Oils:</Bold> Healthy fats and oils, such as those from avocados, nuts, and olive oil. They are crucial for brain health and the absorption of fat-soluble vitamins.
                     </Span>
+                    <LineBreak />
+                    <Span>
+                        -------------------------------------------------------------------------------------------------------------------------------------------------
+                    </Span>
                 </TextBlock>
 
             </Border>
@@ -272,16 +304,17 @@
             <!-- Add Ingredient Button -->
             <Border Background="#454545"
                     CornerRadius="10"
-                    Padding="10">
+                    Padding="5">
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center">
                     <Button Content="Add Ingredient"
                             Style="{StaticResource ButtonStyle}"
                             x:Name="addIngredientButton"
-                            FontSize="18"
+                            FontSize="12"
                             Background="#ed55de"
                             Click="AddIngredientButton_Click"
-                            Height="40">
+                            Height="30"
+                            Width="260">
                         <Button.ToolTip>
                             <ToolTip Content="Click to add the ingredient to your recipe." />
                         </Button.ToolTip>

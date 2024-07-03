@@ -68,8 +68,22 @@ namespace ST10256859_PROG6221_POE_WPF.CreateRecipeWindows
                 MessageBox.Show("Please select a food group.");
                 return;
             }
-            
-            createRecipeWin.newIngredients.Add(new Ingredient(newIngredientName, newIngredientUnitOfMeasurement, newIngredientQuantity, newIngredientNumberOfCalories, newIngredientFoodGroup));
+
+            // Create the new ingredient
+            Ingredient newIngredient = new Ingredient(newIngredientName, newIngredientUnitOfMeasurement, newIngredientQuantity, newIngredientNumberOfCalories, newIngredientFoodGroup);
+
+            // Add the new ingredient to the list
+            createRecipeWin.newIngredients.Add(newIngredient);
+
+            // Calculate the total calories of the recipe
+            double totalCalories = createRecipeWin.newIngredients.Sum(ing => ing.Calories);
+
+            // Check if the total calories exceed 300
+            if (totalCalories > 300)
+            {
+                MessageBox.Show($"Warning: The total calories for this recipe now exceed 300 (Current total: {totalCalories}).", "Calorie Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
             this.Close();
         }
 
