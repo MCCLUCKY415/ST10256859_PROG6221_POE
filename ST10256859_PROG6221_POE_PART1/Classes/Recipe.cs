@@ -19,6 +19,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
     // This class represents a recipe, containing ingredients, steps, and other details.
     public class Recipe
     {
+        // Properties
         public string RecipeName { get; set; }  // The name of the recipe.
         public List<Ingredient> Ingredients { get; set; }  // List of ingredients in the recipe.
         public List<Step> Steps { get; set; }  // List of steps in the recipe.
