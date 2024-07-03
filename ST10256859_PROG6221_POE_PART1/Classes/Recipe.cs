@@ -112,6 +112,7 @@ namespace ST10256859_PROG6221_POE_PART1.Classes
                 details.AppendLine($"Step {stepNumber}: {step.StepDescription}");
                 stepNumber++;
             }
+            details.AppendLine("                                                     ");
 
             // Recipe statistics
             details.AppendLine("-----------------------------------------------------");
